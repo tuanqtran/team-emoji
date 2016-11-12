@@ -3,19 +3,19 @@
 }*/
 
 body{
-	background-image: url(../images/background/retina_wood/retina_wood.png);
+	background-image: url(../../images/background/retina_wood/retina_wood.png);
 }
 
 .container100{
 	width: 100%;
 	height: 100%;
-	background-image: url(../images/background/lined_paper/lined_paper.png);
+	background-image: url(../../images/background/lined_paper/lined_paper.png);
 }
 
 .container90{
 	width: 90%;
 	height: 90%;
-	background-image: url(../images/background/lined_paper/lined_paper.png);
+	background-image: url(../../images/background/lined_paper/lined_paper.png);
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -36,7 +36,7 @@ body{
 */
 .imgFrame{
 	border: 25px solid #ccb089;
-	border-image-source: url('../images/wooden_frame.jpg');
+	border-image-source: url('../../images/wooden_frame.jpg');
 	border-image-slice: 50 65;
 }
 

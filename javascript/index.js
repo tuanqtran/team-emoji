@@ -17,8 +17,8 @@ $(function() {
 
 var coin = 0;
 
-var introSong = new Audio("sounds/arcadeSong.mp4");
-var coinSound = new Audio("sounds/cha-ching.wav")
+var introSong = new Audio("public/sounds/arcadeSong.mp4");
+var coinSound = new Audio("public/sounds/cha-ching.wav")
 	// Calls the intro song upon start of the webpage along with a eternal loop.
 	introSong.play();
 	introSong.loop = true;
@@ -29,11 +29,11 @@ var coinSound = new Audio("sounds/cha-ching.wav")
 		if (introSong.paused === false){
 			introSong.pause();
 			introSong.currentTime = 0;
-			$(".musicContainer").html("<img class='mediaButton' src='images/pauseButton.png' alt=''>")
+			$(".musicContainer").html("<img class='mediaButton' src='public/images/pauseButton.png' alt=''>")
 		}else{
 			introSong.play();
 			introSong.loop = true;	
-			$(".musicContainer").html("<img class='mediaButton' src='images/playButton.png' alt=''>")		
+			$(".musicContainer").html("<img class='mediaButton' src='public/images/playButton.png' alt=''>")		
 		}
 	});
 
