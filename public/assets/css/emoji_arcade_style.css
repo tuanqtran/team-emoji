@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+	background: rgba(0,0,0,1);
+	background-image: url(../images/arcade-cabinet-2.png);
+	background-size: cover;
+	min-height: 100%;
+
+}
+
+a {
+	color: #FFFFFF;
+	
+}
+
+a:hover {
+	color: #FFFFFF;
+	
+}
+
+header {
+	background: #343434;
+	height: 60px;
+	padding: 20px;
+	padding-left: 40px;
+	
+}
+
+body {
+
+
+
+     
+  }
+      
+main {
+	margin: 0;
+	margin-right: auto;
+	margin-left: auto;
+	flex: 1 0 auto;
+	padding: 1rem;
+}
+
+#nav {
+	color: #FFFFFF;
+	padding: 5px;
+	padding-top: 0px;
+	background-color: none;
+}
+
+#nav a {
+	font-family: 'VT323', monospace;
+	font-size: 22px;
+	color: #fdde67;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: 22px;
+}
+
+
+.inside {
+	border: 3px solid #ef9d00;
+}
+
+#nav a:hover {
+	color: #FFFFFF;
+}
+
+.logo-home {
+	width: 50%;
+}
+
+#home {
+	border: 1px solid #575757;
+	padding: 20px;
+	background: radial-gradient(#363636, #141414);
+	min-height: 100%;
+}
+
+main {
+	min-height: 600px;
+	padding: 40px;
+	text-align: center;
+}
+
+main.home {
+	min-height: 300px;
+	padding: 40px;
+	text-align: center;
+}
+
+#gameMessage {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 22px;
+	line-height: 24px;
+	color: #ffffff;
+	vertical-align: middle;
+	display: table-cell;
+	padding-top: 10px;
+
+}
+
+#welcome {
+	font-family: 'VT323', monospace;
+	font-size: 22px;
+	line-height: 18px;
+	color: #ffffff;
+	vertical-align: middle;
+	display: table-cell;
+	padding-top: 0px;
+
+}
+
+#gameTime {
+	font-family: 'VT323', monospace;
+	font-size: 48px;
+	line-height: 48px;
+	color: #fdde67;
+	vertical-align: middle;
+	display: table-cell;
+
+}
+
+#gameLogo {
+	padding-top: 15px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	
+
+}
+
+#footer-home {
+
+	font-family: 'VT323', monospace;
+	font-size: 48px;
+	line-height: 48px;
+	color: #fdde67;
+	vertical-align: middle;
+	text-align: center;
+	padding-bottom: 40px;
+
+
+}
+
+#header-home {
+	padding: 40px;
+	font-family: 'VT323', monospace;
+	font-size: 48px;
+	line-height: 48px;
+	color: #fdde67;
+	vertical-align: middle;
+	text-align: center;
+
+
+}
+
+img.emoji {
+	width: 90%;
+}
+
+.emoji-card {
+	width: 90%;
+	background: #FFFFFF;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+	box-shadow: 8px 8px 7px rgba(0, 0, 0, 0.2);
+}
+
+main.memoji {
+	background: #485dab;
+}
+
+
+h1 {
+	font-size: 2rem;
+}
+
+h4 {
+	font-size: 1.5rem;
+	font-weight: 300;
+}
+
+h5 {
+	font-size: 1.3rem;
+	font-weight: 100;
+
+}
+
+footer {
+	background: #343434;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-top: 20px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 15px 15px 7px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.jumbotron {
+	background-color: rgba(151,0,0,.6);
+	color: #FFFFFF;
+	margin-top: 20px;
+	box-shadow: 15px 15px 7px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	border: 1px solid #bc0909;
+	margin-bottom:0px;
+}
+
+.modal {
+	background: rgba(255,255,255,1);
+	border: 5px solid #999999 ;
+}
+
+.modal-content h4 {
+	font-size: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 668px) {
+
+	.emoji-card {
+	width: 98%;
+	background: #FFFFFF;
+	padding: 2px;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+	.col {
+		margin-bottom: 20px;
+	}
+
+	.row {
+		margin-bottom: 0px;
+	}
+}
+
+
+}
+

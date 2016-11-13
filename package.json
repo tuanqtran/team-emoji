@@ -1,0 +1,28 @@
+{
+  "name": "team-emoji",
+  "version": "1.0.0",
+  "description": "Emoji Arcade",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuanqtran/team-emoji.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuanqtran/team-emoji/issues"
+  },
+  "homepage": "https://github.com/tuanqtran/team-emoji#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0"
+  }
+}

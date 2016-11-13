@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Arcade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- add jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.1.0.js"   
+    integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   
+    crossorigin="anonymous">   
+    </script>
+
+       <!-- Add Font Awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add materialize stylesheet -->
+    <link href="../css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection">
+<!-- Add unique stylesheet -->
+    <link href="../css/emoji_arcade_style.css" rel="stylesheet" type="text/css">
+
+<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Add Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
+
+<!--load Materialize javascript - lets Materialize framework work-->
+    <script src="../js/materialize.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+<div class="container home">     
+
+  
+  <header>
+    <div class="row">
+      <div class="col s12 m4 l4">
+        <img src="../images/ea-logo.png" width="200px" class="logo">
+      </div>
+
+      <div class="col s12 m4 l4"  id="welcome">
+        Welcome, Player!
+      </div>
+      <div class="col s12 m4 l4" id="nav">
+          <a href="/memoji/new">New Game</a> | <a href="/memoji/scores">High Scores</a>    
+      </div>
+    </div>
+  </header>
+
+ <main class="memoji">
+  <div class="row">
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40a.png" class="emoji" id="1"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40b.png" class="emoji"  id="2"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40c.png" class="emoji"  id="3"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40d.png" class="emoji"  id="4"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40e.png" class="emoji"  id="5"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40f.png" class="emoji"  id="6"></div></div>
+  </div>
+  <div class="row">
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41b.png" class="emoji"  id="1"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41c.png" class="emoji"  id="2"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41d.png" class="emoji"  id="3"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/game/2620.png" class="emoji"  id="4"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/game/2620.png" class="emoji"  id="5"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41d.png" class="emoji"  id="6"></div></div>
+  </div>
+  <div class="row">
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40f.png" class="emoji"  id="1"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40e.png" class="emoji"  id="2"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40d.png" class="emoji"  id="3"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40c.png" class="emoji"  id="4"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40b.png" class="emoji"  id="5"></div></div>
+      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40a.png" class="emoji"  id="6"></div></div>
+  </div>
+ </main>
+
+   <footer>
+     <div class="row">
+      <div class="col s6 m6 l4" id="gameTime">
+        0:38
+      </div>
+
+      <div class="col s6 m6 l4" id="gameMessage">
+        Choose two cards that match.
+      </div>
+
+       <div class="col s12 m12 l4" id="gameLogo">
+        <img src="../images/ea-logo.png" width="150px">
+      </div>
+
+  </footer> 
+
+</div>
+
+
+</body>
+</html>
