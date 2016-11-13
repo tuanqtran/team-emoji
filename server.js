@@ -7,8 +7,8 @@ var logger = require('morgan');
 
 // define controllers
 var emoji_controller = require('./controllers/emoji_controller.js');
-var memoji_controller = require('./controllers/memoji_controller.js');
-var emojid_controller = require('./controllers/emojid_controller.js')
+//var memoji_controller = require('./controllers/memoji_controller.js');
+//var emojid_controller = require('./controllers/emojid_controller.js')
 
 // create server instance
 var app = express();
@@ -38,11 +38,11 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.use('/', emoji_controller);
-app.use('/memoji', memoji_controller);
-app.use('/emojid', emojid_controller);
+//app.use('/memoji', memoji_controller); It may be useful to seperate the controllers. One for main and one for each game
+//app.use('/emojid', emojid_controller);
 
 // start server listening
-app.listen(PORT, function(){
-	console.log('App listening on PORT ' + PORT);
-})
-
+var server = app.listen(app.get('port'), function() {
+  	// then save a log of the listening to our debugger.
+    console.log('Express server listening on port ' + server.address().port);
+});
