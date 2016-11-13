@@ -28,6 +28,7 @@
 <!--load Materialize javascript - lets Materialize framework work-->
     <script src="../js/materialize.js"></script>
 
+    <script src="../js/index.js"></script>
 
 </head>
 
@@ -41,15 +42,26 @@
   <header>
     <div class="row">
       <div class="col s12 m4 l4">
-        <img src="../images/ea-logo.png" width="200px" class="logo">
+        <img src="../images/memoji-logo-small.png" width="200px">
       </div>
 
       <div class="col s12 m4 l4"  id="welcome">
         Welcome, Player!
       </div>
       <div class="col s12 m4 l4" id="nav">
-          <a href="/memoji/new">New Game</a> | <a href="/memoji/scores">High Scores</a>    
+          <!--<a href="/memoji/new"><img src="../images/start.png" width="80"></a> -->
+          <a href="#modalScores" class="modal-trigger waves-effect "><img src="../images/scores.png" width="80"></a> 
+
+          <div id="modalScores" class="modal" >
+            <div class="modal-content">
+              <h4 class="modal-title">High Scores</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pharetra est quis bibendum lobortis. Quisque venenatis gravida enim in ornare. Quisque ante ante, fringilla sit amet risus non, suscipit sollicitudin urna. Aenean mattis eros eu orci posuere dictum. </p>
+            </div>
+          </div>   
       </div>
+
+      
+            
     </div>
   </header>
 
@@ -91,12 +103,17 @@
       </div>
 
        <div class="col s12 m12 l4" id="gameLogo">
-        <img src="../images/ea-logo.png" width="150px">
+        <img src="../images/ea-logo-2.png" width="150px">
       </div>
 
   </footer> 
 
 </div>
+
+
+
+
+
 
 
 </body>
