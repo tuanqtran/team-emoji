@@ -2,31 +2,24 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8">
-    <title>Emoji Arcade</title>
+    <title>Memoji || Emoji Arcade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- add jQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.1.0.js"   
-    integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   
-    crossorigin="anonymous">   
-    </script>
-
-       <!-- Add Font Awesome -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Add materialize stylesheet -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Add materialize stylesheet -->
     <link href="../css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection">
+    <!--load Materialize javascript - lets Materialize framework work-->
+    <script src="../js/materialize.js"></script>
+
+<!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Add unique stylesheet -->
     <link href="../css/emoji_arcade_style.css" rel="stylesheet" type="text/css">
-
 <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Add Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
-
-<!--load Materialize javascript - lets Materialize framework work-->
-    <script src="../js/materialize.js"></script>
 
     <script src="../js/index.js"></script>
 
@@ -42,7 +35,7 @@
   <header>
     <div class="row">
       <div class="col s12 m4 l4">
-        <img src="../images/memoji-logo-small.png" width="200px">
+        <img src="../images/memoji-logo-small.png" width="200px" class="minigame-logo">
       </div>
 
       <div class="col s12 m4 l4"  id="welcome">
@@ -50,12 +43,40 @@
       </div>
       <div class="col s12 m4 l4" id="nav">
           <!--<a href="/memoji/new"><img src="../images/start.png" width="80"></a> -->
-          <a href="#modalScores" class="modal-trigger waves-effect "><img src="../images/scores.png" width="80"></a> 
+          <a class="waves-effect modal-trigger" href="#modalScores"><img src="../images/scores.png" width="80" class="scores-button"></a> 
 
-          <div id="modalScores" class="modal" >
+          <div id="modalScores" class="modal">
             <div class="modal-content">
               <h4 class="modal-title">High Scores</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pharetra est quis bibendum lobortis. Quisque venenatis gravida enim in ornare. Quisque ante ante, fringilla sit amet risus non, suscipit sollicitudin urna. Aenean mattis eros eu orci posuere dictum. </p>
+              <div class="row high-score-row">
+                <div class="col s4">seeksort</div>
+                <div class="col s4 score-num">865</div>
+                <div class="col s4">11/17/16</div>
+              </div>
+
+              <div class="row high-score-row">
+                <div class="col s4">tuantran1122</div>
+                <div class="col s4 score-num">745</div>
+                <div class="col s4">11/17/16</div>
+              </div>
+
+              <div class="row high-score-row">
+                <div class="col s4">brandon_s </div>
+                <div class="col s4 score-num">675</div>
+                <div class="col s4">11/17/16</div>
+              </div>
+
+              <div class="row high-score-row">
+                <div class="col s4">marcus-lam</div>
+                <div class="col s4 score-num">545</div>
+                <div class="col s4">11/17/16</div>
+              </div>
+
+              <div class="row high-score-row">
+                <div class="col s4">shabbyveneer</div>
+                <div class="col s4 score-num">2</div>
+                <div class="col s4">11/17/16</div>
+              </div>
             </div>
           </div>   
       </div>
@@ -66,40 +87,264 @@
   </header>
 
  <main class="memoji">
-  <div class="row">
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40a.png" class="emoji" id="1"></div></div>
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40b.png" class="emoji"  id="2"></div></div>
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40c.png" class="emoji"  id="3"></div></div>
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40d.png" class="emoji"  id="4"></div></div>
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40e.png" class="emoji"  id="5"></div></div>
-      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40f.png" class="emoji"  id="6"></div></div>
-  </div>
-  <div class="row">
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41b.png" class="emoji"  id="1"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41c.png" class="emoji"  id="2"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41d.png" class="emoji"  id="3"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/game/2620.png" class="emoji"  id="4"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/game/2620.png" class="emoji"  id="5"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f41d.png" class="emoji"  id="6"></div></div>
-  </div>
-  <div class="row">
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40f.png" class="emoji"  id="1"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40e.png" class="emoji"  id="2"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40d.png" class="emoji"  id="3"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40c.png" class="emoji"  id="4"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40b.png" class="emoji"  id="5"></div></div>
-      <div class="col s4 m2 l2""><div class="emoji-card"><img src="../emoji/animals/1f40a.png" class="emoji"  id="6"></div></div>
-  </div>
+
+   <div class="row">
+      <div class="col s12 m4 l4">
+        <div id="gameTime">
+          0:38
+        </div>
+
+        <div id="gameMessage">
+          Choose two cards that match.
+        </div>
+      </div>
+
+      <div class="col s12 m8 l8">
+
+
+                <div class="row">
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="1">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-1">
+                        <img src="../emoji/animals/1f40a.png" class="emoji hide-card" id="card-1">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="2">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-2">
+                        <img src="../emoji/animals/1f40b.png" class="emoji hide-card" id="card-2">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="3">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-3">
+                        <img src="../emoji/animals/1f40c.png" class="emoji hide-card" id="card-3">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="4">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-4">
+                        <img src="../emoji/animals/1f40d.png" class="emoji hide-card" id="card-4">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="5">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-5">
+                        <img src="../emoji/animals/1f40e.png" class="emoji hide-card" id="card-5">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2">
+                      <div class="emoji-card face-down" id="6">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-6">
+                        <img src="../emoji/animals/1f40f.png" class="emoji hide-card" id="card-6">
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="7">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-7">
+                        <img src="../emoji/animals/1f41b.png" class="emoji hide-card" id="card-7">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="8">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-8">
+                        <img src="../emoji/animals/1f41c.png" class="emoji hide-card" id="card-8">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="9">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-9">
+                        <img src="../emoji/animals/1f41d.png" class="emoji hide-card" id="card-9">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="10">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-10">
+                        <img src="../emoji/game/2620.png" class="emoji hide-card" id="card-10">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="11">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-11">
+                        <img src="../emoji/game/2620.png" class="emoji hide-card" id="card-11">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="12">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-12">
+                        <img src="../emoji/animals/1f41d.png" class="emoji hide-card" id="card-12">
+                      </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="13">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-13">
+                        <img src="../emoji/animals/1f40f.png" class="emoji hide-card" id="card-13">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="14">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-14">
+                        <img src="../emoji/animals/1f40e.png" class="emoji hide-card" id="card-14">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="15">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-15">
+                        <img src="../emoji/animals/1f40d.png" class="emoji hide-card" id="card-15">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="16">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-16">
+                        <img src="../emoji/animals/1f40c.png" class="emoji hide-card" id="card-16">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="17">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-17">
+                        <img src="../emoji/animals/1f40b.png" class="emoji hide-card" id="card-17">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="18">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-18">
+                        <img src="../emoji/animals/1f40a.png" class="emoji hide-card" id="card-18">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="19">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-19">
+                        <img src="../emoji/animals/1f40f.png" class="emoji hide-card" id="card-19">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="20">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-20">
+                        <img src="../emoji/animals/1f40e.png" class="emoji hide-card" id="card-20">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="21">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-21">
+                        <img src="../emoji/animals/1f40d.png" class="emoji hide-card" id="card-21">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="22">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-22">
+                        <img src="../emoji/animals/1f40c.png" class="emoji hide-card" id="card-22">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="23">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-23">
+                        <img src="../emoji/animals/1f40b.png" class="emoji hide-card" id="card-23">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="24">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-24">
+                        <img src="../emoji/animals/1f40a.png" class="emoji hide-card" id="card-24">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="25">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-25">
+                        <img src="../emoji/animals/1f40f.png" class="emoji hide-card" id="card-25">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="26">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-26">
+                        <img src="../emoji/animals/1f40e.png" class="emoji hide-card" id="card-26">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="27">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-27">
+                        <img src="../emoji/animals/1f40d.png" class="emoji hide-card" id="card-27">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="28">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-28">
+                        <img src="../emoji/animals/1f40c.png" class="emoji hide-card" id="card-28">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="29">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-29">
+                        <img src="../emoji/animals/1f40b.png" class="emoji hide-card" id="card-29">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="30">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-30">
+                        <img src="../emoji/animals/1f40a.png" class="emoji hide-card" id="card-30">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="31">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-31">
+                        <img src="../emoji/animals/1f40f.png" class="emoji hide-card" id="card-31">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="32">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-32">
+                        <img src="../emoji/animals/1f40e.png" class="emoji hide-card" id="card-32">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="33">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-33">
+                        <img src="../emoji/animals/1f40d.png" class="emoji hide-card" id="card-33">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="34">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-34">
+                        <img src="../emoji/animals/1f40c.png" class="emoji hide-card" id="card-34">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="35">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-35">
+                        <img src="../emoji/animals/1f40b.png" class="emoji hide-card" id="card-35">
+                      </div>
+                    </div>
+                    <div class="col s2 m2 l2"">
+                      <div class="emoji-card face-down" id="36">
+                        <img src="../emoji/game/qm.png" class="qm" id="qm-36">
+                        <img src="../emoji/animals/1f40a.png" class="emoji hide-card" id="card-36">
+                      </div>
+                    </div>
+                </div>
+      </div>
+    </div>
  </main>
 
    <footer>
      <div class="row">
-      <div class="col s6 m6 l4" id="gameTime">
-        0:38
+      <div class="col s6 m6 l4" >
       </div>
 
-      <div class="col s6 m6 l4" id="gameMessage">
-        Choose two cards that match.
+      <div class="col s6 m6 l4">
       </div>
 
        <div class="col s12 m12 l4" id="gameLogo">
@@ -110,7 +355,38 @@
 
 </div>
 
+<script>
 
+$(document).ready(function(){
+
+  
+  $('.modal-trigger').leanModal();
+
+  $('.emoji-card').on('click', flipCard)
+
+  // Flip Card
+    function flipCard() {
+
+      cardSelected = $(this).attr('id'); 
+      console.log("Flip Card " + cardSelected);
+      cardQM = "#qm-" + cardSelected;
+      cardImage = "#card-" + cardSelected;
+      cardDiv = "#" + cardSelected;
+
+      $(cardDiv).attr('class', 'emoji-card face-up');
+      $(cardQM).attr('class', 'qm show-card');
+      $(cardImage).attr('class', 'emoji');
+    }
+
+
+
+
+});
+
+
+
+
+</script>
 
 
 
