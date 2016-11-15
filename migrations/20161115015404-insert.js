@@ -140,6 +140,139 @@ module.exports = {
         }
       ]
     )
+
+    return models.Flags.bulkCreate(
+      [
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },{
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },{
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        },
+        {
+          letter_id: "",
+          file_name: ".svg",
+          emoji_name: ""
+        }
+      ]
+    )
+
+    return models.Random.bulkCreate(
+      [
+      ]
+    )
   },
 
   down: function (queryInterface, Sequelize) {

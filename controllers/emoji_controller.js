@@ -4,74 +4,31 @@
 // /cardGame /guessGame
 // Leaderboard page = /overallLeaderBoard /guessGameLeaderBoard /cardGameLeaderBoard
  
-var express = require('express'),
+var path = require('path'),
+	express = require('express'),
 	router = express.Router(),
 	models = require('../models');
 
 // Enter all get/put/post here
 
 router.get('/', function(req, res){
-	if("click on start"){
-		res.redirect('/gameSelectionPage')
-	}
+	res.sendFile(path.join(__dirname + '/../views/index.html'));
 });
 
-router.get('/gameSelectionPage', function(req, res){
-	// TODO Add data for gamePage.
-	if("click on card game"){
-		res.redirect('/cardGameStartPage')
-	}else if("click on guess emoji game"){
-		res.redirect('/guessThisEmojiPage')
-	}else if("click on Leaderboard"){
-		res.redirect('/overallLeaderBoard')
-	}
+router.get('/games', function(req, res){
+	res.sendFile(path.join(__dirname + '/../views/games/index.html'));
 });
 
-router.get('/overallLeaderBoard', function(req, res){
-	// TODO Requires to grab data from both the memory/card game database to display highscores.
-	if("bring back to game selection page"){
-		res.redirect('/gameSelectionPage')
-	}
+router.get('/games/memoji/landing', function(req, res){
+	res.sendFile(path.join(__dirname + '/../views/memoji/new.html'));
 });
 
-router.get('/cardGameStartPage', function(req, res){
-	if("click on high score"){
-		res.redirect('/cardGameLeaderBoard')
-	}else if("click on start game"){
-		res.redirect('/cardGame')
-	}else if("bring back to game selection page"){
-		res.redirect('/gameSelectionPage')
-	}
+router.get('/games/memoji/start', function(req, res){
+	res.sendFile(path.join(__dirname + '/../views/memoji/index.html'));
 });
 
-router.get('/cardGame', function(req, res){
-	if("click new game"){
-		res.redirect('/gameSelectionPage')
-	}else if("click try again"){
-		res.redirect('/cardGame')
-	}else if("click on high score"){
-		res.redirect('/cardGameLeaderBoard')		
-	}
-});
-
-router.get('/guessThisEmojiPage', function(req, res){
-	if("click on high score"){
-		res.redirect('/guessGameLeaderBoard')
-	}else if("click on start game"){
-		res.redirect('/guessGame')
-	}else if("bring back to game selection page"){
-		res.redirect('/gameSelectionPage')
-	}
-});
-
-router.get('/guessGame', function(req, res){
-	if("click new game"){
-		res.redirect('/gameSelectionPage')
-	}else if("click try again"){
-		res.redirect('/guessGame')
-	}else if("click on high score"){
-		res.redirect('/guessGameLeaderBoard')		
-	}
+router.get('/games/emojid', function(req, res){
+	res.sendFile(path.join(__dirname + '/../views/emojid/new.html'));
 });
 
 
