@@ -6,7 +6,7 @@
  
 var express = require('express'),
 	router = express.Router(),
-	emoji = require('../models/emoji.js');
+	models = require('../models');
 
 // Enter all get/put/post here
 

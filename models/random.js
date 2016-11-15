@@ -1,8 +1,15 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Random = sequelize.define('Random', {
-    id: DataTypes.INTEGER,
-    letter_id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    letter_id: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     file_name: DataTypes.STRING,
     emoji_name: DataTypes.STRING
   }, {

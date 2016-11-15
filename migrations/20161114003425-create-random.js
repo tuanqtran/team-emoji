@@ -8,11 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
       letter_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       file_name: {
         type: Sequelize.STRING

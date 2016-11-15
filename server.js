@@ -2,8 +2,7 @@
 var express 	= require('express');
 var methodOverride	= require('method-override');
 var bodyParser 	= require('body-parser');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+//var logger = require('morgan'); // KF: I'm going to look into using this later
 
 // define controllers
 var emoji_controller = require('./controllers/emoji_controller.js');
@@ -21,6 +20,20 @@ app.set('port', process.env.PORT || 3000);
 
 // target static files
 app.use('/static', express.static(__dirname + '/public/assets/'));
+
+
+// Sequelize
+var models = require('./models');
+var sequelizeConnection = models.sequelize;
+
+sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+
+// sync the tables
+.then(function(){
+    return sequelizeConnection.sync({force:true})
+})
+
+
 
 // Sets up the Express app to handle data parsing 
 app.use(bodyParser.json());
