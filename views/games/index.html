@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Emoji Arcade</title>
+	<title>Games || Emoji Arcade</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- add jQuery -->
-	<!-- Reference to reset.min css sheet. -->	
-	<link rel="stylesheet" type="text/css" href="../css/reset.min.css">
-	<!-- Reference to materialize.min css sheet. -->
-	<link rel="stylesheet" type="text/css" href="../css/materialize.css">
-	<!-- Reference to style css sheet. 
-	<link rel="stylesheet" type="text/css" href="public/assets/css/style.css">-->	
-	<!-- Reference to app style sheet. -->	
-	<link rel="stylesheet" type="text/css" href="../css/emoji_arcade_style.css">
-	<!--Import Google Icon Font-->
+ <!-- Reference to reset.min css sheet. --> 
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.min.css">
+    <!-- add jQuery -->
+      <!-- Reference to jQuery version 2.2.3. -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
+    ></script>
+    <!-- Add materialize stylesheet -->
+    <link href="/static/css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection">
+    <!--load Materialize javascript - lets Materialize framework work-->
+    <script src="/static/js/materialize.js"></script>
+
+<!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Add unique stylesheet -->
+    <link href="/static/css/emoji_arcade_style.css" rel="stylesheet" type="text/css">
+<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Add Google Web Fonts -->
+<!-- Add Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
 
-    <!-- Ensures the page is mobile responsive. -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/index.js"></script>
 
 </head>
 <body>
@@ -28,7 +34,7 @@
   		<div class="inside">
   		<!-- header styled special for home page -->
 			<div id="header-home">
-			  <img src="../images/ea-logo-2.png" class="logo"> <!-- Logo -->
+			  <img src="/static/images/ea-logo-2.png" class="logo"> <!-- Logo -->
 
 			  <h1>Select Your Game</h1>
 			</div>
@@ -36,12 +42,12 @@
 	   		<main class="home">
 	   			<div class="row">
 	   				<div class="col s12 m12 l6 gameIcon">
-		   				<img src="../images/memoji-game-icon.png" class="game-icon"><br>
-		   				<img src="../images/memoji-logo-final.png" class="game-icon-logo">
+		   				<img src="/static/images/memoji-game-icon.png" class="game-icon"><br>
+		   				<img src="/static/images/memoji-logo-final.png" class="game-icon-logo">
 	   				</div>
 	   				<div class="col s12 m12 l6 gameIcon">
-		   				<img src="../images/emojid-game-icon.png" class="game-icon"><br>
-		   				<img src="../images/emojid-logo-final.png" class="game-icon-logo">
+		   				<img src="/static/images/emojid-game-icon.png" class="game-icon"><br>
+		   				<img src="/static/images/emojid-logo-final.png" class="game-icon-logo">
 	   				</div>
 	   			</div>
 		   		
@@ -53,16 +59,22 @@
 		    </div>
     	</div>
 	</div>
-	
 
-	<!-- Reference to jQuery version 2.2.3. -->
-	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
-	></script>
-	<!-- Reference to Materialize.min javascript sheet. -->
-	<script src="../js/materialize.min.js"></script>
+<script>
 
-    <!-- Reference to index.js -->
-	<script src="../js/index.js"></script>
+$(document).ready(function(){
+
+  
+  $('.modal-trigger').leanModal();
+
+
+});
+
+
+
+
+</script>
+
 
 
 </body>
