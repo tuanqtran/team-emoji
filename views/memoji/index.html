@@ -33,7 +33,7 @@
     <header>
       <div class="row">
         <div class="col s12 m4 l4">
-          <img src="/static/images/memoji-logo-small.png" width="200px" class="minigame-logo">
+          <a href="/memoji/new"><img src="/static/images/memoji-logo-small.png" width="200px" class="minigame-logo"></a>
         </div>
 
         <div class="col s12 m4 l4"  id="welcome">
@@ -88,7 +88,7 @@
      <div class="row">
         <div class="col s12 m4 l4">
           <div id="gameTime">
-          <div id="minutes" class="timer">00</div>:<div id="seconds" class="timer">00</div></div>
+          <div class="Timer"></div>
           <div id="gameMessage">Choose two cards that match.</div>
         </div>
 
@@ -251,7 +251,7 @@ var evaluateSecondClick = function(reference){
     console.log("Second " + firstCardValue);
     secondCardId = reference.attr("id");
     $("#" + secondCardId).attr("disabled", 'disabled');
-    alert("There's a match!")
+    $('#gameMessage').html("There's a match!");
     firstCardId = "";
     firstClick = false;
     matchScore++;
@@ -266,13 +266,15 @@ var calcAccuracy = function(){
 var match = function(){
     if(matchScore == calcWinScore(difficultyNumber)){
       calcAccuracy();
-        alert("You Win!");
+      $('#gameMessage').html("You Win!");
     }
 };
 
 var nonMatch = function(reference){
+    flipCardBack(firstCardId);
+    flipCardBack(secondCardId);
     console.log(reference.attr("value"));
-    alert("Not a match!");
+    $('#gameMessage').html("Not a match!");
     $("#" + firstCardId).removeAttr("disabled");
     firstCardId = "";
     secondCardId = "";
@@ -282,7 +284,7 @@ var nonMatch = function(reference){
 
 var disableSpecialCard = function(reference){
     reference.attr("disabled", 'disabled');
-  alert("You picked a special card " + reference.attr("value"));  
+    $('#gameMessage').html("You picked a special card " + reference.attr("value"));
 };
 
 var resetFirstClick = function(){
@@ -346,8 +348,7 @@ $(document).on("click", '.emoji-card', function(){
 
 
 
-    var card1 = "NULL";
-    var card2 = "NULL"
+
 
     // Flip Card
     function flipCard() {
@@ -400,13 +401,22 @@ $(document).on("click", '.emoji-card', function(){
 
   
 
-    var sec = 0;
-
-    function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
-        document.getElementById("seconds").innerHTML=pad(++sec%60);
-        document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
-    }, 1000);
+   // Timer
+(function() {
+    var counter = 0,
+        cDisplay = $(".Timer");
+    format = function(t) {
+        var minutes = Math.floor(t / 600),
+            seconds = Math.floor((t / 10) % 60);
+        minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
+        seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+        cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
+    };
+    setInterval(function() {
+        counter++;
+        format(counter);
+    }, 100);
+})();
 
 });
 
