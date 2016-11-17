@@ -6,7 +6,6 @@ html {
 	background: rgba(0,0,0,1);
 	background-image: url(../images/arcade-cabinet-5.png);
 	background-size: cover;
-	min-height: 100%;
 }
 
 a {
@@ -78,8 +77,8 @@ main.emojid {
 #home {
 	border: 0px solid #575757;
 	padding: 20px;
+	padding-bottom: 0px;
 	background: radial-gradient(#363636, #141414);
-	min-height: 100%;
 }
 
 #footer-home {
@@ -100,6 +99,7 @@ main.emojid {
 	color: #fdde67;
 	vertical-align: middle;
 	text-align: center;
+	padding-bottom: 5px;
 }
 
 footer {
@@ -114,11 +114,29 @@ footer {
 }
 
 .container {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
 	box-shadow: 15px 15px 7px rgba(0, 0, 0, 0.4);
 	/*border: 5px solid #292929;*/
+}
+
+.centerVH{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.googleBlock {
+	display: inline-block;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.timer {
+	display: inline-block;
+}
+
+.guestLogin {
+	display: inline-block;
 }
       
 #nav {
@@ -173,6 +191,14 @@ footer {
 	padding-top: 20px;
 }
 
+.loginFunctions {
+	display: block;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 20px;
+}
+
 .row .col {
 	padding-right: 0px;
 }
@@ -224,7 +250,6 @@ footer {
 
 .hide-card {
 	opacity: 0;
-	display: none;
 }
 
 .show-card {
@@ -303,6 +328,8 @@ img.emoji {
 	right: 0;
 	margin-right: 5px;
 	margin-bottom: 5px;
+	opacity: 0;
+	pointer-events: none;
 }
 
 img.game-icon {
@@ -313,6 +340,11 @@ img.game-icon {
 
 img.game-icon-logo {
 	width: 70%;
+}
+
+img.game-icon-logo-small {
+	width: 30%;
+	padding-top: 30px;
 }
 .gameIcon {
 	text-align: center;
@@ -331,6 +363,7 @@ img.game-icon-logo {
 	font-family: 'VT323', monospace;
 	color: #ffffff;
 	font-size: 36px;
+	z-index: 1005;
 }
 
 .modal-content h4 {
@@ -338,6 +371,9 @@ img.game-icon-logo {
 	color: #ffb608;
 	font-size: 4rem;
 	padding: 0px;
+}
+
+.modal {
 }
 
 .high-score-row {
@@ -373,7 +409,18 @@ img.game-icon-logo {
 	color: #ffffff;
 }
 
+.small-link {
+	color: #FFFFFF;
+	font-size: 22px;
+}
+
 .pressStart {
+	font-family: 'VT323', monospace;
+	font-size: 48px;
+	color: #ffffff;
+}
+
+.choose-text {
 	font-family: 'VT323', monospace;
 	font-size: 48px;
 	color: #ffffff;
@@ -397,10 +444,169 @@ img.game-icon-logo {
 	font-family: 'VT323', monospace;
 	font-size: 48px;
 	color: #fdde67;
+	padding: 0px;
+	margin: 0px;
+	line-height: 22px;
+}
+
+.devTeam {
+	padding: 0px;
+	font-family: 'VT323', monospace;
+	font-size: 22px;
+	color: #fdde67;
+	display: block;
+}
+
+.devTeam:hover {
+	color: #FFFFFF;
+}
+
+.loginText{
+	font-family: 'VT323', monospace;
+	font-size: 36px;
+	color: #ffffff;
+	padding-top: 15px;
+}
+
+#loginBlock {
+	padding: 0px;
+	margin: 0px;
+}
+
+.loginButton{
+	font-family: 'VT323', monospace;
+	font-size: 36px;
+	color: #ffffff;
+
+}
+
+.loginButton:hover{
+	color: #fdde67;
+	text-decoration: underline;
+
 }
 
 .hide{
 	display: none;
+}
+
+
+/* lower opactiy on timer */
+
+.randomName{
+	-webkit-animation: invisible .5s linear;
+	-moz-animation: invisible .5s linear;
+	-o-animation: invisible .5s linear;
+	animation: invisible .5s linear;
+}
+
+@-webkit-keyframes invisible {
+    0%{opacity:1;}
+    100%{opacity:0;}
+}
+@-moz-keyframes invisible {
+    0%{opacity:1;}
+    100%{opacity:0;}
+}
+@-o-keyframes invisible {
+    0%{opacity:1;}
+    100%{opacity:0;}
+}
+@keyframes invisible { 
+    0%{opacity:1;}
+    100%{opacity:0;}
+}
+
+
+/* raise opacity on timer */
+
+.appear{
+	-webkit-animation: reappear .5s linear;
+	-moz-animation: reappear .5s linear;
+	-o-animation: reappear .5s linear;
+	animation: reappear .5s linear;
+}
+
+@-webkit-keyframes reappear {
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+@-moz-keyframes reappear {
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+@-o-keyframes reappear {
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+@keyframes reappear { 
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+
+/* Card Flip */
+.nameOfThingtoFlip{
+	-webkit-animation: cardReveal .5s linear;
+	-moz-animation: cardReveal .5s linear;
+	-o-animation: cardReveal .5s linear;
+	animation: cardReveal .5s linear;
+
+}
+
+@-webkit-keyframes cardReveal {
+    0%{
+	    -ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);  	
+    }
+    100%{
+    	-ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);  
+	    background: #FFFFFF;
+    }
+}
+@-moz-keyframes cardReveal {
+    0%{
+	    -ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);    
+
+    }
+    100%{
+    	-ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);  
+	    background: #FFFFFF;
+    }
+}
+@-o-keyframes cardReveal {
+    0%{
+	    -ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);
+   	
+    }
+    100%{
+    	-ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);  
+
+    }
+}
+@keyframes cardReveal { 
+    0%{
+	    -ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg); 
+
+    }
+    100%{
+    	-ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg); 
+	    background: #FFFFFF; 
+	}
 }
 
 @-webkit-keyframes pulse {

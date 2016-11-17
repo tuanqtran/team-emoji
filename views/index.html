@@ -5,14 +5,21 @@
 	<title>Emoji Arcade</title>
 
 	<!-- add jQuery -->
-	<!-- Reference to reset.min css sheet. -->	
-	<link rel="stylesheet" type="text/css" href="/static/css/reset.min.css">
-	<!-- Reference to materialize.min css sheet. -->
+	<!-- Reference to reset.min css sheet. 
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.min.css">-->	
+
+	<!-- add jQuery -->
+    <!-- Reference to jQuery version 2.2.3. -->
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
+	></script>
+	<!-- Reference to materialize css sheet. -->
 	<link rel="stylesheet" type="text/css" href="/static/css/materialize.css">
-	<!-- Reference to style css sheet. 
-	<link rel="stylesheet" type="text/css" href="public/assets/css/style.css">-->	
+	<!-- Reference to Materialize.min javascript sheet. -->
+	<script src="/static/js/materialize.js"></script>
 	<!-- Reference to app style sheet. -->	
 	<link rel="stylesheet" type="text/css" href="/static/css/emoji_arcade_style.css">
+    <!-- Reference to index.js -->
+	<script src="/static/js/index.js"></script>
 	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add Google Web Fonts -->
@@ -20,6 +27,9 @@
 
     <!-- Ensures the page is mobile responsive. -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="google-signin-client_id" content="36382136108-7kc90f14ku4qfrf4s07rdihonthp5hrk.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
 <body>
@@ -33,11 +43,27 @@
    
 	   		<main class="home">
 		   		<div class="row">
-		   			<div class="col s12">
-		   				<p class="playerOne">Ready Player One <br>
-		   				Login with Google or Play as Guest</p>
+		   			<div class="col s12" id="loginBlock">
+		   				<p class="playerOne">Ready Player One</p>
+		   				<div class="loginFunctions">
+		   				<div class="g-signin2 googleBlock" data-onsuccess="onSignIn"></div>
+   <a href="#" onclick="signOut();">Sign out</a> <div class="guestLogin">or <a href="#modalLogin" class="loginButton modal-trigger">Play as Guest</a></div>
+		   				</div>
+
+		   				<div id="modalLogin" class="modal">
+				            <div class="modal-content">
+				              <h4 class="modal-title">Login as Guest</h4>
+				              <div class="row">
+				                <div class="col s12"> Enter Form</div>
+				              </div>
+				            </div>
+				        </div> 
+
+
 					</div>
 				</div>
+
+
 				<div class="row">
 					<div class="col s0 m2 l2"></div>
 
@@ -57,25 +83,45 @@
 		    <div id="footer-home">
 		    TM and © 1988 TEAM EMOJI CO., LTD<bR>
 		    LICENSED BY CODING BOOTCAMP
+		    <a href="#modalDev" class="modal-trigger devTeam"> ** View Development Team **</a>
 		    </div>
+
+		    <div id="modalDev" class="modal">
+	            <div class="modal-content">
+	              <h4 class="modal-title">Development Team</h4>
+	              	<div class="row">
+	                	<div class="col s12">text</div>
+					</div>
+	            </div>
+            </div>   
     	</div>
 	</div>
 	
 
-	<!-- Reference to jQuery version 2.2.3. -->
-	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
-	></script>
-	<!-- Reference to Materialize.min javascript sheet. -->
-	<script src="/static/js/materialize.min.js"></script>
-
-    <!-- Reference to index.js -->
-	<script src="/static/js/index.js"></script>
+	
 <script>
       $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
       	$('.modal-trigger').leanModal();
       });
 </script>
+
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+    }
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+    }
+    </script>
 
 </body>
 </html>

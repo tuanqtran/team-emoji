@@ -5,8 +5,12 @@
     <title>Emoj-ID || Emoji Arcade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- add jQuery -->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <!-- Reference to reset.min css sheet. --> 
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.min.css">
+    <!-- add jQuery -->
+      <!-- Reference to jQuery version 2.2.3. -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
+    ></script>
     <!-- Add materialize stylesheet -->
     <link href="/static/css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection">
     <!--load Materialize javascript - lets Materialize framework work-->
@@ -140,35 +144,7 @@
 
 $(document).ready(function(){
 
-  
-  $('.modal-trigger').leanModal();
-
-  $('.emoji-card').on('click', flipCard)
-
-
-  $('.emoji-option')
-  .mouseout(function() {
-    $(this).attr('class', 'emoji-option');
-  })
-  .mouseover(function() {
-     $(this).attr('class', 'emoji-option emoji-option-ro');
-  });
-
-  // Flip Card
-    function flipCard() {
-
-      cardSelected = $(this).attr('id'); 
-      console.log("Flip Card " + cardSelected);
-      cardQM = "#qm-" + cardSelected;
-      cardImage = "#card-" + cardSelected;
-      cardDiv = "#" + cardSelected;
-
-      $(cardDiv).attr('class', 'emoji-card face-up');
-      $(cardQM).attr('class', 'qm show-card');
-      $(cardImage).attr('class', 'emoji');
-    }
-
-
+ $('.modal-trigger').leanModal();
 
 
 });
