@@ -30,7 +30,7 @@ $(".emojiCoin").on("click", $(".emojiCoin"), function(){
 	$(".emojiCredit").html("Credit " + coin + "/2");
 
 	if(coin == 2){
-		$(".startText").html("Start Game")
+		$(".startText").html("<a href='/games'>Start Game</a>")
 		.attr("class", "pressStart")
 			.attr("value", "startGame");
 	}
