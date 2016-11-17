@@ -95,18 +95,18 @@
 
    <div class="row">
     <div class="col s12 m12 l12">
-      <form action="/data/Animals" method="POST">
+      <form action="/games/memoji/start" method="POST">
+      <h4>Choose Theme</h4>
+       <input type="radio" name="theme" value="Animals" checked>Animal<br>
+       <input type="radio" name="theme" value="Flags">Flag<br>
+        <input type="radio" name="theme" value="Random">Random
        
-       <button type="submit" class="themeSelector" id="Animals">Animal</button>
-       <button type="submit" class="themeSelector" id="Flags">Flag</button>
-       <button type="submit" class="themeSelector" id="Random">Random</button>
+
       
-
-
-
-      <button class="difficultySelector" value="easy">Easy</button>
-      <button class="difficultySelector" value="medium">Medium</button>
-      <button class="difficultySelector" value="hard">Hard</button>
+       <h4>Choose Difficulty</h4>
+       <input type="radio" name="difficulty" value="easy">Easy<br>
+       <input type="radio" name="difficulty" value="medium"  checked>Medium<br>
+        <input type="radio" name="difficulty" value="hard">Hard
 
       </form>
     </div>

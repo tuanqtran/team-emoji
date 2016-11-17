@@ -19,13 +19,12 @@ router.get('/games', function(req, res){
 	res.sendFile(path.join(__dirname + '/../views/games/index.html'));
 });
 
-router.get('/games/memoji/landing', function(req, res){
-	res.sendFile(path.join(__dirname + '/../views/memoji/new.html'));
-});
 
-router.get('/games/memoji/start', function(req, res){
+router.get('/games/memoji/landing', function(req, res){
 	res.sendFile(path.join(__dirname + '/../views/memoji/index.html'));
 });
+
+
 
 router.get('/games/emojid', function(req, res){
 	res.sendFile(path.join(__dirname + '/../views/emojid/new.html'));
