@@ -34,11 +34,19 @@
 
 <body>
 <div class="Timer"></div>
-<form action="/data" method="POST">
-	<button type="submit" class="themeSelector" value="Animals">Animal</button>
-	<button type="submit" class="themeSelector" value="Flags">Flag</button>
-	<button type="submit" class="themeSelector" value="Random">Random</button>
-</form>
+<!-- <form action="/data/Animals" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" id="Animals">Animal</button>
+<!-- </form> -->
+<!-- <form action="/data/Flags" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" id="Flags">Flag</button>
+<!-- </form>
+ --><!-- <form action="/data/Random" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" id="Random">Random</button>
+<!-- </form> -->
+
 
 <button class="difficultySelector" value="easy">Easy</button>
 <button class="difficultySelector" value="medium">Medium</button>
@@ -80,10 +88,34 @@ var initialTest = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "
 	matchScore = 0,
 	difficultyValue = "",
 	difficultyNumber = 0,
-	incorrect = 0;
+	incorrect = 0,
+    tableData = "",
+    emojiObjects = [];
+
+
+
+
+function runTableQuery(theme){
+
+    // Here we get the location of the root page.
+    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+    var currentURL = window.location.origin;
+
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
+        .done(function(data) {
+            tableData = data;
+            console.log(tableData);
+            for(var i = 0; i<tableData.length;i++){
+                emojiObjects.push(tableData[i]);
+            }
+            initDeck();
+        });
+}
 
 $(document).on("click", ".themeSelector", function(){
 	var theme = $(this).val();
+	runTableQuery(theme);
 	
 });
 
@@ -99,8 +131,8 @@ var calcWinScore = function(difficultyNumber){
 
 var initDeck = function(){
 	// Put in orm function for theme.
-	for(var i=0; i<initialTest.length; i++){
-	  themeCardsArray.push(initialTest[i], initialTest[i]);
+	for(var i=0; i<emojiObjects.length; i++){
+	  themeCardsArray.push(emojiObjects[i], emojiObjects[i]);
 	}
 };
 
@@ -172,8 +204,8 @@ var shuffleArray = function(array){
 
 var renderCards = function(array){
 	for(i=0;i<themeCardsArray.length; i++){
-		$(".memoji .row").append("<div class='col s4 m2 l2 emoji-card' value='" + themeCardsArray[i] + "' id='" + (i + 1) + "'>" + themeCardsArray[i] + "</div>")
-	}
+        $(".memoji .row").append("<div class='col s4 m2 l2 emoji-card' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'>" + '<img src="/static/images/emojisvg/' + themeCardsArray[i].file_name + '"/>' + "</div>")
+        }
 };
 
 
@@ -265,13 +297,22 @@ $(document).on("click", '.emoji-card', function(){
     }
 });
 
-var start = new Date;
-
-setInterval(function() {
-	$('.Timer').text(Math.round((new Date - start) / 1000, 0) + " Seconds");
-}, 1000);
-
-initDeck();
+// Timer
+(function() {
+    var counter = 0,
+        cDisplay = $(".Timer");
+    format = function(t) {
+        var minutes = Math.floor(t / 600),
+            seconds = Math.floor((t / 10) % 60);
+        minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
+        seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+        cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
+    };
+    setInterval(function() {
+        counter++;
+        format(counter);
+    }, 100);
+})();
 
 </script>
 

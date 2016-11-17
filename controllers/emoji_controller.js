@@ -12,7 +12,7 @@ var path = require('path'),
 // Enter all get/put/post here
 
 router.get('/', function(req, res){
-	res.sendFile(path.join(__dirname + '/../views/index.html'));
+	res.sendFile(path.join(__dirname + '/../views/dummy.html'));
 });
 
 router.get('/games', function(req, res){
@@ -31,5 +31,46 @@ router.get('/games/emojid', function(req, res){
 	res.sendFile(path.join(__dirname + '/../views/emojid/new.html'));
 });
 
+router.get('/data/:model', function(req, res){
+	var hey = req.params.model;
+	if(hey == "Animals" || hey == "Flags" || hey == "Random"){
+		models[req.params.model].findAll({
+			where:
+			{id:
+				{$gt: 0}
+			}
+		})
+		.then(function(data){
+			res.send(data);
+		})
+	}else{
+		res.status(500).send('Something broke!')
+	}
+
+});
+
+// router.get('/data/Flags', function(req, res){
+// 	models.Flags.findAll({
+// 		where:
+// 		{id:
+// 			{$gt: 0}
+// 		}
+// 	})
+// 	.then(function(data){
+// 		res.json(data);
+// 	})
+// });
+
+// router.get('/data/Random', function(req, res){
+// 	models.Random.findAll({
+// 		where:
+// 		{id:
+// 			{$gt: 0}
+// 		}
+// 	})
+// 	.then(function(data){
+// 		res.json(data);
+// 	})
+// });
 
 module.exports = router;
