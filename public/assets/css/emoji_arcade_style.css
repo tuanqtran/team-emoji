@@ -240,6 +240,7 @@ footer {
 	border: 1px solid #d58f09;
 }
 
+
 .face-up {
 	background: #FFFFFF;
 }
@@ -255,7 +256,6 @@ footer {
 .show-card {
 	opacity: 0;
 }
-
 
 #emoji-zoom {
 	padding: 30px;
@@ -281,8 +281,6 @@ footer {
     -ms-transform:scale(5.25); 
     -o-transform:scale(5.25);
      transform:scale(5.25);	
-
-
 }
 
 #emojiOptions {
@@ -428,7 +426,7 @@ img.game-icon-logo-small {
 
 .emojiCredit {
 	font-family: 'VT323', monospace;
-	font-size: 48px;
+	font-size: 22px;
 	color: #fdde67;
 }
 

@@ -94,8 +94,22 @@
   </div>
 
    <div class="row">
-    <div class="col s12 m6 l6 choose-text">Choose Theme</div>
-    <div class="col s12 m6 l6 choose-text">Choose Difficulty</div>
+    <div class="col s12 m12 l12">
+      <form action="/data/Animals" method="POST">
+       
+       <button type="submit" class="themeSelector" id="Animals">Animal</button>
+       <button type="submit" class="themeSelector" id="Flags">Flag</button>
+       <button type="submit" class="themeSelector" id="Random">Random</button>
+      
+
+
+
+      <button class="difficultySelector" value="easy">Easy</button>
+      <button class="difficultySelector" value="medium">Medium</button>
+      <button class="difficultySelector" value="hard">Hard</button>
+
+      </form>
+    </div>
   </div>
 
  </main>
@@ -121,6 +135,20 @@
 $(document).ready(function(){
 
   $('.modal-trigger').leanModal();
+
+  // INSERT INTO /memoji/new.html
+
+$(document).on("click", ".themeSelector", function(){
+    var theme = $(this).val();
+    
+    
+});
+
+$(document).on("click", ".difficultySelector", function(){
+    difficultyValue = $(this).val();
+    
+});
+////////////////
 
 });
 
