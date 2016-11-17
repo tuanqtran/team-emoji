@@ -86,27 +86,6 @@
 
    <main class="memoji">
 
-       <div class="row">
-
-         <form action="/games/memoji/start" method="POST">
-          <div class="col s6 m6 l6">
-            
-            <h4>Choose Theme</h4>
-             <input type="radio" name="theme" value="Animals" checked>Animal<br>
-             <input type="radio" name="theme" value="Flags">Flag<br>
-              <input type="radio" name="theme" value="Random">Random
-          </div>
-             
-
-          <div class="col s6 m6 l6">
-             <h4>Choose Difficulty</h4>
-             <input type="radio" name="difficulty" value="easy">Easy<br>
-             <input type="radio" name="difficulty" value="medium"  checked>Medium<br>
-              <input type="radio" name="difficulty" value="hard">Hard
-          </div>
-            </form>
-        </div>
-
 
 
      <div class="row">
@@ -159,7 +138,8 @@ $(document).ready(function(){
 // A and B will be the skull/milo cards. Does not required to be filed to win/lose.
 
 
-runTableQuery(res.options.theme);
+runTableQuery('Animals');
+
 
 
 function runTableQuery(theme){
@@ -178,7 +158,7 @@ function runTableQuery(theme){
             initDeck();
         }).then (
           
-          difficultySelection(res.options.difficulty);
+          difficultySelection('medium');
 
         );
 
