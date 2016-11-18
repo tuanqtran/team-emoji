@@ -524,6 +524,20 @@ img.game-icon-logo-small {
 	line-height: 22px;
 }
 
+.skull-overlay {
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 125%;
+  width: 100%;
+  background: #000;
+  will-change: opacity;
+  text-align: center;
+}
+
 .devTeam {
 	padding: 0px;
 	font-family: 'VT323', monospace;

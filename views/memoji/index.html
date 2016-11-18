@@ -323,6 +323,8 @@ var shuffleArray = function(array){
     return array;
 };
 
+
+
 var renderCards = function(array){
   for(i=0;i<themeCardsArray.length; i++){
         // $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
@@ -423,6 +425,7 @@ $(document).on("click", '.emoji-card', function(){
         // Call Andrew again.
         // Cover the screen for a bit and then shuffle all cards.
         // Display a message stating all cards have been shuffled.
+        skullMaster();
       }
       // Resets the first click.
       if(firstClick == true){
@@ -512,21 +515,34 @@ $(document).on("click", '.emoji-card', function(){
 
 
   function revealAll(difficultyNumber) {
-
-
-
     var cards = (difficultyNumber + 2);
-
     for (i=1; i<=cards;i++) {
       var myCard = "#" + i;
       if ($(myCard).attr("disabled") !== "disabled"){
         flipCard(i);
         flipCardBack(i, 5000);
       }
-    }
+    }  
+  }
 
+  function skullMaster() {
+
+      skullContainer  = document.createElement('div');
+      $(skullContainer).attr('id', 'skull-container'); 
+
+      skullDiv = document.createElement('div');
+      $(skullDiv).attr('class', 'skull-overlay'); 
+      $(skullContainer).append(skullDiv);
+      $('html').append(skullContainer);
+      $('.skull-overlay').html('<img src="/static/images/emojisvg/skull.svg" width="90%">');
+
+    setTimeout(function(){ 
+      $('#skull-container').empty()
+
+    },8000)
     
   }
+
 
   function youWin() {
     playAgain() ;
