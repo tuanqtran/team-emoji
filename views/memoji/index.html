@@ -416,7 +416,8 @@ $(document).on("click", '.emoji-card', function(){
       if(reference.attr("value") == "z"){
         // Call Andrew.
         // Reveal all cards for one second. Then flip them back.
-        revealAll(difficultyNumber, referenceCard);
+        $("#" + referenceCard).css('background-color', '#000000 !important');
+        revealAll(difficultyNumber);
 
       }else if(reference.attr("value") == "y"){
         // Call Andrew again.
@@ -510,11 +511,9 @@ $(document).on("click", '.emoji-card', function(){
   };
 
 
-  function revealAll(difficultyNumber, milo) {
+  function revealAll(difficultyNumber) {
 
-    var miloCardDiv = "#" + milo;
-        $(miloCardDiv).css('background', '#EF509D');
-        console.log("Milo Card Div: " + miloCardDiv);
+
 
     var cards = (difficultyNumber + 2);
 
@@ -525,6 +524,8 @@ $(document).on("click", '.emoji-card', function(){
         flipCardBack(i, 5000);
       }
     }
+
+    
   }
 
   function youWin() {
