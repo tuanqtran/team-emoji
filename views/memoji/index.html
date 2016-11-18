@@ -424,11 +424,7 @@ $(document).on("click", '.emoji-card', function(){
     // Flip Card
     function flipCard(cardSelected) {
 
-      if (card1 == "NULL") {
-        card1 = cardSelected;
-      } else {
-        card2 = cardSelected;
-      }
+  
       console.log("Flip Card " + cardSelected);
       var cardQM = "#qm-" + cardSelected;
       var cardImage = "#card-" + cardSelected;
@@ -449,11 +445,11 @@ $(document).on("click", '.emoji-card', function(){
     function flipCardBack(card) {
 
       setTimeout(function(){ 
-        console.log("five seconds" + cardSelected);
+        console.log("five seconds" + card);
 
-        var cardQM = "#qm-" + cardSelected;
-        var cardImage = "#card-" + cardSelected;
-        var cardDiv = "#" + cardSelected;
+        var cardQM = "#qm-" + card;
+        var cardImage = "#card-" + card;
+        var cardDiv = "#" + card;
 
         $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlipBack');
        
