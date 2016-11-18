@@ -92,10 +92,27 @@
         <div class="col s12 m4 l4">
           <div id="gameTime">
           <div class="Timer"></div>
-          <div id="gameMessage">Choose two cards that match.</div>
+          <div id="gameMessage">
+          1) Choose your theme and difficulty level.<br>
+          2) Find matching pairs.<br>
+          3) Watch out for the skull. It will shuffle the board.<br>
+          4)Find Milo the sugar glider for a quick peek at the entire board.</div>
         </div>
 
-        <div class="col s12 m8 l8 gameboard">
+        <div class="col s12 m8 l8 ">
+
+          <div id="themeButtons">
+            <h2>Choose your theme</h2>
+              <button type="button" class="themeSelector btn waves-effect" value="Animals">Animals</button>
+              <button type="button" class="themeSelector btn waves-effect" value="Flags">Flags</button>
+              <button type="button" class="themeSelector btn waves-effect" value="Random">Random</button>
+          </div>
+          <div id="difficultyButtons">
+            <h2>Choose your theme</h2>
+              <button type="button" class="themeSelector btn waves-effect" value="Animals">Animals</button>
+              <button type="button" class="themeSelector btn waves-effect" value="Flags">Flags</button>
+              <button type="button" class="themeSelector btn waves-effect" value="Random">Random</button>
+          </div>
                   
         </div>
       </div>
@@ -121,10 +138,20 @@
 
 $(document).ready(function(){
 
+  var themeSelected;
+  var difficultySelected;
+
   
   $('.modal-trigger').leanModal();
 
-  $('.emoji-card').on('click', flipCard)
+  $('.emoji-card').on('click', flipCard);
+
+  $('.themeSelector').on('click', chooseTheme);
+
+  $('.difficultySelector').on('click', chooseDifficulty);
+
+
+
 
 // var easyArrayTiles = [], // 24 tiles
   // mediumArrayTiles = [], // 36 tiles.
@@ -138,11 +165,38 @@ $(document).ready(function(){
 // A and B will be the skull/milo cards. Does not required to be filed to win/lose.
 
 
-runTableQuery('Animals');
+function chooseTheme() {
+
+  themeSelected = $(this).attr('val'); 
+  $('#themeButtons').css('display', 'none');
+  $('#difficultyButtons').css('display', 'block');
+}
+
+function chooseDifficulty() {
+  difficultySelected = $(this).attr('val'); 
+  $('#difficultyButtons').css('display', 'none');
+  startGame(themeSelected, difficultySelected)
+}
+
+
+function startGame(theme, difficulty) {
+
+  $('#gameMessage').html("Choose two matching cards");
+  $('.gameboard').empty();
+
+  runTableQuery(theme, difficulty);
+}
 
 
 
-function runTableQuery(theme){
+  
+
+
+
+
+
+
+function runTableQuery(theme, difficulty){
     // Here we get the location of the root page.
     // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
     var currentURL = window.location.origin;
@@ -150,17 +204,19 @@ function runTableQuery(theme){
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
     $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
         .done(function(data) {
+          console.log("Run Ajax for Theme");
             tableData = data;
             console.log(tableData);
             for(var i = 0; i<tableData.length;i++){
                 emojiObjects.push(tableData[i]);
             }
             initDeck();
-        }).then (
+        }).then(function() {
+          console.log("Run Difficulty Selection");
           
-          difficultySelection('medium');
+          difficultySelection(difficulty);
 
-        );
+        });
 
     
 }
@@ -178,6 +234,8 @@ var initDeck = function(){
 };
 
 var difficultySelection = function(difficultyValue){
+
+  console.log("Difficulty Selection Running");
   // Select difficulty
   switch(difficultyValue) {
       case "easy":
@@ -246,7 +304,9 @@ var shuffleArray = function(array){
 var renderCards = function(array){
   for(i=0;i<themeCardsArray.length; i++){
         $(".gameboard").append("<div class='col s4 m2 l2' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src='/static/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + '><img class= "emoji" id = "card-' + (i+1) + "src='/static/images/emojisvg/" + themeCardsArray[i].file_name + '"/>' + "</div>")
-  }            
+  }    
+
+  runTimer();        
 };
 
 
@@ -412,22 +472,22 @@ $(document).on("click", '.emoji-card', function(){
 
   
 
-   // Timer
-(function() {
-    var counter = 0,
-        cDisplay = $(".Timer");
-    format = function(t) {
-        var minutes = Math.floor(t / 600),
-            seconds = Math.floor((t / 10) % 60);
-        minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
-        seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
-        cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
-    };
-    setInterval(function() {
-        counter++;
-        format(counter);
-    }, 100);
-})();
+     // Timer
+  function runTimer() {
+      var counter = 0,
+          cDisplay = $(".Timer");
+      format = function(t) {
+          var minutes = Math.floor(t / 600),
+              seconds = Math.floor((t / 10) % 60);
+          minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
+          seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+          cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
+      };
+      setInterval(function() {
+          counter++;
+          format(counter);
+      }, 100);
+  };
 
 });
 

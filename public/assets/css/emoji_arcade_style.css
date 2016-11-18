@@ -175,6 +175,14 @@ footer {
 	text-align: center;
 }
 
+#themeButtons {
+	display: block;
+}
+
+#difficultyButtons {
+	display: none;
+}
+
 .scores-button {
 	padding-top: 15px;
 }
