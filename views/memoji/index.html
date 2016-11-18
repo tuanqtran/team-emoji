@@ -359,15 +359,15 @@ var match = function(){
       calcAccuracy();
       clearInterval(timerCount);
       youWin();
-      $('#gameMessage').html("<h3>You Win!</h3>");
+      $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
     }
 };
 
 var nonMatch = function(reference){
     console.log("Flip first card " + firstCardId);
-    flipCardBack(firstCardId);
+    flipCardBack(firstCardId, 1000);
     console.log("Flip second card " + secondCardId);
-    flipCardBack(secondCardId);
+    flipCardBack(secondCardId, 1000);
     console.log(reference.attr("value"));
     $('#gameMessage').html("<h3>Not a match!</h3>");
     $("#" + firstCardId).removeAttr("disabled");
@@ -405,6 +405,7 @@ $(document).on("click", '.emoji-card', function(){
       if(reference.attr("value") == "milo"){
         // Call Andrew.
         // Reveal all cards for one second. Then flip them back.
+        revealAll(difficultyNumber);
       }else if(reference.attr("value") == "skull"){
         // Call Andrew again.
         // Cover the screen for a bit and then shuffle all cards.
@@ -451,7 +452,7 @@ $(document).on("click", '.emoji-card', function(){
     }
 
     // FLIP CARD BACK BELOW HERE
-    function flipCardBack(card) {
+    function flipCardBack(card, time) {
 
 
 
@@ -473,7 +474,7 @@ $(document).on("click", '.emoji-card', function(){
         setTimeout(function(){ $(cardImage).css('opacity','0'); },250)
 
         setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },500)
-      }, 1000);
+      }, time);
 
     }
 
@@ -495,6 +496,20 @@ $(document).on("click", '.emoji-card', function(){
           format(counter);
       }, 100);
   };
+
+
+  function revealAll(difficultyNumber) {
+
+    var cards = (difficultyNumber + 2);
+
+    for (i=1; i<=cards;i++) {
+      myCard = "#" + i;
+      if (myCard.attr("disabled") !== "disabled"){
+        flipCard(i);
+        flipCardBack(i, 5000);
+      }
+    }
+  }
 
 
   function youWin() {
