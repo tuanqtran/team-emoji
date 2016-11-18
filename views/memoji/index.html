@@ -510,14 +510,14 @@ $(document).on("click", '.emoji-card', function(){
       }, 100);
   };
 
-  
+
   function revealAll(difficultyNumber) {
 
     var cards = (difficultyNumber + 2);
 
     for (i=1; i<=cards;i++) {
-      myCard = "#" + i;
-      if (myCard.attr("disabled") !== "disabled"){
+      var myCard = "#" + i;
+      if ($(myCard).attr("disabled") !== "disabled"){
         flipCard(i);
         flipCardBack(i, 5000);
       }
