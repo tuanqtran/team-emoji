@@ -198,7 +198,7 @@ function chooseDifficulty() {
 
 function startGame(theme, difficulty) {
 
-  $('#gameMessage').html("<p>Choose two matching cards</p>");
+  $('#gameMessage').html("<h3>Choose two matching cards</h3>");
   $('.gameboard').empty();
 
   runTableQuery(theme, difficulty);
@@ -339,7 +339,7 @@ var evaluateSecondClick = function(reference){
     console.log("Second " + firstCardValue);
     secondCardId = reference.attr("id");
     $("#" + secondCardId).attr("disabled", 'disabled');
-    $('#gameMessage').html("There's a match!");
+    $('#gameMessage').html("<h3>There's a match!</h3>");
     firstCardId = "";
     firstClick = false;
     matchScore++;
@@ -354,7 +354,7 @@ var calcAccuracy = function(){
 var match = function(){
     if(matchScore == calcWinScore(difficultyNumber)){
       calcAccuracy();
-      $('#gameMessage').html("<p>You Win!</p>");
+      $('#gameMessage').html("<h3>You Win!</h3>");
     }
 };
 
@@ -364,7 +364,7 @@ var nonMatch = function(reference){
     console.log("Flip second card " + secondCardId);
     flipCardBack(secondCardId);
     console.log(reference.attr("value"));
-    $('#gameMessage').html("<p>Not a match!</p>");
+    $('#gameMessage').html("<h3>Not a match!</h3>");
     $("#" + firstCardId).removeAttr("disabled");
     firstCardId = "";
     secondCardId = "";
@@ -374,8 +374,8 @@ var nonMatch = function(reference){
 
 var disableSpecialCard = function(reference){
     reference.attr("disabled", 'disabled');
-    $('#gameMessage').html("<p>You picked a special card " + reference.attr("value") + 
-      "</p>");
+    $('#gameMessage').html("<h3>You picked a special card " + reference.attr("value") + 
+      "</h3>");
 };
 
 var resetFirstClick = function(){
@@ -388,9 +388,10 @@ $(document).on("click", '.emoji-card', function(){
 
   var referenceCard = $(this).attr('id'); 
 
-    flipCard(referenceCard);
+   
 
     if(reference.attr("disabled") !== "disabled"){
+       flipCard(referenceCard);
         // Milo/Skull Logic
         if(reference.attr("value") == "milo" || reference.attr("value") == "skull"){
           // Disables the milo/skull cards.
@@ -447,12 +448,16 @@ $(document).on("click", '.emoji-card', function(){
     // FLIP CARD BACK BELOW HERE
     function flipCardBack(card) {
 
+
+
       setTimeout(function(){ 
         console.log("five seconds" + card);
 
         var cardQM = "#qm-" + card;
         var cardImage = "#card-" + card;
         var cardDiv = "#" + card;
+
+        $(cardDiv).removeAttr("disabled");
 
         $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlipBack');
        
@@ -462,7 +467,7 @@ $(document).on("click", '.emoji-card', function(){
         $(cardImage).css('opacity','1)');
         setTimeout(function(){ $(cardImage).css('opacity','0'); },250)
 
-        setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },250)
+        setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },500)
       }, 1000);
 
     }

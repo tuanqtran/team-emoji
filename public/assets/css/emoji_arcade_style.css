@@ -239,6 +239,16 @@ footer {
 
 }
 
+#gameMessage h3 {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 28px;
+	line-height: 32px;
+	color: #ffffff;
+	margin-bottom: 10px;
+	text-align: center;
+
+}
+
 
 #gameTime {
 	font-family: 'VT323', monospace;
@@ -249,7 +259,7 @@ footer {
 	display: block;
 	margin-bottom: 20px;
 	margin-top: 40px;
-	text-align: left;
+	text-align: center;
 }
 
 #gameLogo {
@@ -278,7 +288,7 @@ footer {
 }
 
 .hide-card {
-	opacity: 0;
+	opacity: 1;
 }
 
 .show-card {
