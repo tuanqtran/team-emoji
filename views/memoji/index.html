@@ -320,7 +320,7 @@ var shuffleArray = function(array){
 
 var renderCards = function(array){
   for(i=0;i<themeCardsArray.length; i++){
-        $(".gameboard").append("<div class='col s4 m2 l2' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src='/static/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + '><img class= "emoji" id = "card-' + (i+1) + "src='/static/images/emojisvg/" + themeCardsArray[i].file_name + '"/>' + "</div>")
+        $(".gameboard").append("<div class='col s4 m2 l2' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + '><img class= "emoji" id = "card-' + (i+1) + "src='/static/images/emojisvg/" + themeCardsArray[i].file_name + '"/>' + "</div>")
   }    
 
   runTimer();        
