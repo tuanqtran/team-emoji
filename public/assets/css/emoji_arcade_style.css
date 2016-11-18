@@ -270,6 +270,34 @@ h3.youWin {
 	margin-bottom: 20px;
 }
 
+.accuracyDiv {
+
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 40px;
+	line-height: 44px;
+	color: #ffffff;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	text-align: center;
+
+}
+
+.playAgain {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.btn {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#newGame {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 22px;
+	color: #ffffff;
+}
+
 img.milo {
 	width: 90%;
 }

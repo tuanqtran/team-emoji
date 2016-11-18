@@ -98,6 +98,9 @@
               <p>3) Watch out for the skull. It will shuffle the board.</p>
               <p>4) Find Milo the sugar glider for a quick peek at the entire board.</p>
             </div>
+
+            <div class="accuracyDiv"></div>
+            <div class="playAgain"></div>
           </div>
         </div>
 
@@ -352,14 +355,18 @@ var evaluateSecondClick = function(reference){
 // Increment incorrect matches then divide that number by level difficulty match. * 100.
 var calcAccuracy = function(){
   console.log(((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100));
+
+  accuracy = ((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100).toFixed(2);
+  $('.accuracyDiv').html('Accuracy: ' + accuracy + '%');
 }
 
 var match = function(){
     if(matchScore == calcWinScore(difficultyNumber)){
       calcAccuracy();
       clearInterval(timerCount);
+
       youWin();
-      $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
+
     }
 };
 
@@ -511,12 +518,25 @@ $(document).on("click", '.emoji-card', function(){
     }
   }
 
-
   function youWin() {
-
+    playAgain() ;
+    $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
     $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
+  }
 
 
+  function loadGame() {
+    $('#gameMessage').html("<p>1) Choose your theme and difficulty level.</p><p>2) Find matching pairs.</p><p>3) Watch out for the skull. It will shuffle the board.</p><p>4) Find Milo the sugar glider for a quick peek at the entire board.</p>");
+    $('.gameboard').html('<div id="themeButtons"><h2>Choose your theme</h2><button type="button" class="themeSelector btn waves-effect" value="Animals">Animals</button><button type="button" class="themeSelector btn waves-effect" value="Flags">Flags</button><button type="button" class="themeSelector btn waves-effect" value="Random">Random</button></div><div id="difficultyButtons"><h2>Choose your Difficulty</h2><button type="button" class="difficultySelector btn waves-effect" value="easy">Easy</button><button type="button" class="difficultySelector btn waves-effect" value="medium">Medium</button><button type="button" class="difficultySelector btn waves-effect" value="hard">Hard</button></div>');
+    $('#difficultyButtons').removeAttr('display');
+    $('#themeButtons').removeAttr('display');
+    $('.accuracyDiv').empty();
+    $('.Timer').empty();
+  }
+
+  function playAgain() {
+    $('.playAgain').html("<button type='button' class='btn waves-effect' id='newGame'>Play Again</button>")
+    $('#newGame').on('click', loadGame);
   }
 
 });
