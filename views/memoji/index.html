@@ -239,7 +239,7 @@ var difficultySelection = function(difficultyValue){
   switch(difficultyValue) {
       case "easy":
       // 22 indicates 11 pairs of cards excluding the milo/skull special cards for this difficulty case.
-          difficultyNumber = 4;
+          difficultyNumber = 22;
           calcWinScore(difficultyNumber);
       difficultyLevel(difficultyNumber);          
           break;
@@ -364,12 +364,12 @@ var match = function(){
     }
 };
 
-var nonMatch = function(reference){
+var nonMatch = function(secondCardId){
     console.log("Flip first card " + firstCardId);
     flipCardBack(firstCardId);
     console.log("Flip second card " + secondCardId);
     flipCardBack(secondCardId);
-    console.log(reference.attr("value"));
+    // console.log(reference.attr("value"));
     $('#gameMessage').html("<h3>Not a match!</h3>");
     $("#" + firstCardId).removeAttr("disabled");
     firstCardId = "";
@@ -379,6 +379,7 @@ var nonMatch = function(reference){
 };
 
 var disableSpecialCard = function(reference){
+    flipCardBack(firstCardId);
     reference.attr("disabled", 'disabled');
     $('#gameMessage').html("<h3>You picked a special card!</h3>");
 };
@@ -420,11 +421,12 @@ $(document).on("click", '.emoji-card', function(){
           // First Click.
           evaluateFirstClick(reference);
         }else if(firstClick == true){
+          secondCardId = reference.attr("id");
           // Evaluate second click for match.
             if(reference.attr("value") == firstCardValue){
               evaluateSecondClick(reference);
             }else{
-              nonMatch(reference);
+              nonMatch(secondCardId);
             }
         }  
     }
@@ -452,7 +454,7 @@ $(document).on("click", '.emoji-card', function(){
     function flipCardBack(card) {
 
       setTimeout(function(){ 
-        console.log("five seconds" + card);
+        // console.log("five seconds" + card);
 
         var cardQM = "#qm-" + card;
         var cardImage = "#card-" + card;
