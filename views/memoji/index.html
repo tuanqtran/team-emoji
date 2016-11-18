@@ -140,12 +140,7 @@
 
 $(document).ready(function(){
 
-  var themeSelected;
-  var difficultySelected;
-
-  var initialTest = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m","n" ,"o" ,"p" ,"q" ,"r" ,"s" ,"t" ,"u" ,"v" ,"w" ,"x" ,"y", "z"],
-  skullMilo = ["skull", "milo"],
-  themeCardsArray = [],
+  var themeCardsArray = [],
   firstCardValue = "",
   firstCardId = "",
   secondCardId = "",
@@ -154,8 +149,10 @@ $(document).ready(function(){
   difficultyValue = "",
   difficultyNumber = 0,
   incorrect = 0,
-    tableData = "",
-    emojiObjects = [];
+  tableData = "",
+  emojiObjects = [],
+  theme = "",
+  difficulty = "";
 
   
   $('.modal-trigger').leanModal();
@@ -181,20 +178,19 @@ $(document).ready(function(){
 
 function chooseTheme() {
 
-  themeSelected = $(this).val(); 
+  theme = $(this).val(); 
 
-  console.log("Theme: " + themeSelected);
+  console.log("Theme: " + theme);
   $('#themeButtons').css('display', 'none');
   $('#difficultyButtons').css('display', 'inline-block');
 }
 
 function chooseDifficulty() {
-  difficultySelected = $(this).val(); 
-  console.log("Difficulty: " + difficultySelected);
+  difficulty = $(this).val(); 
+  console.log("Difficulty: " + difficulty);
   $('#difficultyButtons').css('display', 'none');
-  startGame(themeSelected, difficultySelected)
+  startGame(theme, difficulty)
 }
-
 
 function startGame(theme, difficulty) {
 
@@ -204,50 +200,36 @@ function startGame(theme, difficulty) {
   runTableQuery(theme, difficulty);
 }
 
-
-
-  
-
-
-
-
-
-
 function runTableQuery(theme, difficulty){
-    // Here we get the location of the root page.
-    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-    var currentURL = window.location.origin;
+  // Here we get the location of the root page.
+  // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+  var currentURL = window.location.origin;
 
-    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-    $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
-        .done(function(data) {
-          console.log("Run Ajax for Theme");
-            tableData = data;
-            console.log(tableData);
-            for(var i = 0; i<tableData.length;i++){
-                emojiObjects.push(tableData[i]);
-            }
-            initDeck();
-        }).then(function() {
-          console.log("Run Difficulty Selection");
-          
-          difficultySelection(difficulty);
-
-        });
-
-    
+  // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+  $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
+    .done(function(data) {
+      console.log("Run Ajax for Theme");
+      tableData = data;
+      console.log(tableData);
+      for(var i = 0; i<tableData.length;i++){
+        emojiObjects.push(tableData[i]);
+      }
+      initDeck();
+    }).then(function() {
+      console.log("Run Difficulty Selection");
+      difficultySelection(difficulty);
+    });
 }
 
 var calcWinScore = function(difficultyNumber){
-  console.log(difficultyNumber / 2);
-    return (difficultyNumber / 2);
+  return (difficultyNumber / 2);
 };
 
 var initDeck = function(){
-  // Put in orm function for theme.
   for(var i=0; i<emojiObjects.length; i++){
     themeCardsArray.push(emojiObjects[i], emojiObjects[i]);
   }
+  console.log("Emojis has been pushed. Excluding special cards.");
 };
 
 var difficultySelection = function(difficultyValue){
@@ -257,7 +239,7 @@ var difficultySelection = function(difficultyValue){
   switch(difficultyValue) {
       case "easy":
       // 22 indicates 11 pairs of cards excluding the milo/skull special cards for this difficulty case.
-          difficultyNumber = 22;
+          difficultyNumber = 4;
           calcWinScore(difficultyNumber);
       difficultyLevel(difficultyNumber);          
           break;
@@ -290,17 +272,30 @@ var difficultyLevel = function(difficultyNumber){
 };
 
 var specialCards = function(themeCardsArray){
-  // Put in orm function for skull/milo.
-  for(var i=0; i<skullMilo.length; i++){
-    themeCardsArray.push(skullMilo[i]);
-  }
 
-  // Before shuffle result.
-  console.log(themeCardsArray);
-  // Shuffling cards.
-  shuffleArray(themeCardsArray);
-  // After shuffle result.
-  console.log(themeCardsArray); 
+  // Put in orm function for skull/milo.
+  // for(var i=0; i<skullMilo.length; i++){
+  //   themeCardsArray.push(skullMilo[i]);
+  // }
+  var currentURL = window.location.origin;
+
+  // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+  $.ajax({url: currentURL + "/special", method: "GET"})
+    .done(function(data) {
+      console.log("Run Ajax for Special Cards");
+      tableData = data;
+      console.log(tableData);
+      for(var i = 0; i<tableData.length;i++){
+        themeCardsArray.push(tableData[i]);
+      }
+    }).then(function() {
+      // Before shuffle result.
+      console.log(themeCardsArray);
+      // Shuffling cards.
+      shuffleArray(themeCardsArray);
+      // After shuffle result.
+      console.log(themeCardsArray); 
+    });
 };
 
 /**
@@ -320,7 +315,13 @@ var shuffleArray = function(array){
 
 var renderCards = function(array){
   for(i=0;i<themeCardsArray.length; i++){
-        $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
+        // $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
+        var appendObject = "<div class='col s4 m2 l2'>";
+        appendObject += "<div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'>"
+        appendObject += "<img src='/static/images/emoji/game/qm.png' class='qm' id='qm-" + (i + 1) + "'>";
+        appendObject += "<img class='emoji' id='card-" + (i + 1) + "' src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "'>";
+        appendObject += "</div></div>";
+        $(".gameboard").append(appendObject);  
   }    
 
   runTimer();        
@@ -379,8 +380,7 @@ var nonMatch = function(reference){
 
 var disableSpecialCard = function(reference){
     reference.attr("disabled", 'disabled');
-    $('#gameMessage').html("<h3>You picked a special card " + reference.attr("value") + 
-      "</h3>");
+    $('#gameMessage').html("<h3>You picked a special card!</h3>");
 };
 
 var resetFirstClick = function(){
@@ -398,14 +398,14 @@ $(document).on("click", '.emoji-card', function(){
     if(reference.attr("disabled") !== "disabled"){
        flipCard(referenceCard);
         // Milo/Skull Logic
-        if(reference.attr("value") == "milo" || reference.attr("value") == "skull"){
+        if(reference.attr("value") == "y" || reference.attr("value") == "z"){
           // Disables the milo/skull cards.
           disableSpecialCard(reference);
       
-      if(reference.attr("value") == "milo"){
+      if(reference.attr("value") == "z"){
         // Call Andrew.
         // Reveal all cards for one second. Then flip them back.
-      }else if(reference.attr("value") == "skull"){
+      }else if(reference.attr("value") == "y"){
         // Call Andrew again.
         // Cover the screen for a bit and then shuffle all cards.
         // Display a message stating all cards have been shuffled.
@@ -432,9 +432,7 @@ $(document).on("click", '.emoji-card', function(){
 
     // Flip Card
     function flipCard(cardSelected) {
-
-  
-      console.log("Flip Card " + cardSelected);
+      // console.log("Flip Card " + cardSelected);
       var cardQM = "#qm-" + cardSelected;
       var cardImage = "#card-" + cardSelected;
       var cardDiv = "#" + cardSelected;
@@ -452,8 +450,6 @@ $(document).on("click", '.emoji-card', function(){
 
     // FLIP CARD BACK BELOW HERE
     function flipCardBack(card) {
-
-
 
       setTimeout(function(){ 
         console.log("five seconds" + card);
@@ -476,8 +472,6 @@ $(document).on("click", '.emoji-card', function(){
       }, 1000);
 
     }
-
-  
 
      // Timer
   function runTimer() {

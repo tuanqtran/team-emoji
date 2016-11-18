@@ -31,8 +31,8 @@ router.get('/games/emojid', function(req, res){
 });
 
 router.get('/data/:model', function(req, res){
-	var hey = req.params.model;
-	if(hey == "Animals" || hey == "Flags" || hey == "Random"){
+	var model = req.params.model;
+	if(model == "Animals" || model == "Flags" || model == "Random"){
 		models[req.params.model].findAll({
 			where:
 			{id:
@@ -45,7 +45,18 @@ router.get('/data/:model', function(req, res){
 	}else{
 		res.status(500).send('Something broke!')
 	}
+});
 
+router.get('/special', function(req, res){
+	models.Special.findAll({
+		where:
+		{id:
+			{$gt: 0}
+		}
+	})
+	.then(function(data){
+		res.send(data);
+	})
 });
 
 module.exports = router;
