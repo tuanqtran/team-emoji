@@ -43,7 +43,7 @@
         <div class="col s12 m4 l4" id="nav">
             <!--<a href="/memoji/new"><img src="../images/start.png" width="80"></a> -->
             <a class="waves-effect modal-trigger" href="#modalScores">
-            <img src="static/images/scores.png" width="80" class="scores-button">
+            <img src="/static/images/scores.png" width="80" class="scores-button">
             </a> 
 
                       <div id="modalScores" class="modal">
@@ -91,12 +91,14 @@
      <div class="row">
         <div class="col s12 m4 l4">
           <div id="gameTime">
-          <div class="Timer"></div>
-          <div id="gameMessage">
-          1) Choose your theme and difficulty level.<br>
-          2) Find matching pairs.<br>
-          3) Watch out for the skull. It will shuffle the board.<br>
-          4)Find Milo the sugar glider for a quick peek at the entire board.</div>
+            <div class="Timer"></div>
+            <div id="gameMessage">
+              <p>1) Choose your theme and difficulty level.</p>
+              <p>2) Find matching pairs.</p>
+              <p>3)Watch out for the skull. It will shuffle the board.</p>
+              <p>4)Find Milo the sugar glider for a quick peek at the entire board.</p>
+            </div>
+          </div>
         </div>
 
         <div class="col s12 m8 l8 ">
@@ -108,10 +110,10 @@
               <button type="button" class="themeSelector btn waves-effect" value="Random">Random</button>
           </div>
           <div id="difficultyButtons">
-            <h2>Choose your theme</h2>
-              <button type="button" class="themeSelector btn waves-effect" value="Animals">Animals</button>
-              <button type="button" class="themeSelector btn waves-effect" value="Flags">Flags</button>
-              <button type="button" class="themeSelector btn waves-effect" value="Random">Random</button>
+            <h2>Choose your Difficulty</h2>
+              <button type="button" class="difficultySelector btn waves-effect" value="easy">Easy</button>
+              <button type="button" class="difficultySelector btn waves-effect" value="medium">Medium</button>
+              <button type="button" class="difficultySelector btn waves-effect" value="hard">Hard</button>
           </div>
                   
         </div>
@@ -144,8 +146,6 @@ $(document).ready(function(){
   
   $('.modal-trigger').leanModal();
 
-  $('.emoji-card').on('click', flipCard);
-
   $('.themeSelector').on('click', chooseTheme);
 
   $('.difficultySelector').on('click', chooseDifficulty);
@@ -168,12 +168,15 @@ $(document).ready(function(){
 function chooseTheme() {
 
   themeSelected = $(this).attr('val'); 
+
+  console.log("Theme: " + themeSelected);
   $('#themeButtons').css('display', 'none');
-  $('#difficultyButtons').css('display', 'block');
+  $('#difficultyButtons').css('display', 'inline-block');
 }
 
 function chooseDifficulty() {
   difficultySelected = $(this).attr('val'); 
+  console.log("Difficulty: " + difficultySelected);
   $('#difficultyButtons').css('display', 'none');
   startGame(themeSelected, difficultySelected)
 }
@@ -366,6 +369,10 @@ var resetFirstClick = function(){
 $(document).on("click", '.emoji-card', function(){
   var reference = $(this); 
 
+  var referenceCard = $(this).attr('id'); 
+
+    flipCard(referenceCard);
+
     if(reference.attr("disabled") !== "disabled"){
         // Milo/Skull Logic
         if(reference.attr("value") == "milo" || reference.attr("value") == "skull"){
@@ -400,31 +407,8 @@ $(document).on("click", '.emoji-card', function(){
     }
 });
 
-// Timer
-(function() {
-    var counter = 0,
-        cDisplay = $(".Timer");
-    format = function(t) {
-        var minutes = Math.floor(t / 600),
-            seconds = Math.floor((t / 10) % 60);
-        minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
-        seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
-        cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
-    };
-    setInterval(function() {
-        counter++;
-        format(counter);
-    }, 100);
-})();
-
-
-
-
-
     // Flip Card
-    function flipCard() {
-
-      var cardSelected = $(this).attr('id'); 
+    function flipCard(cardSelected) {
 
       if (card1 == "NULL") {
         card1 = cardSelected;

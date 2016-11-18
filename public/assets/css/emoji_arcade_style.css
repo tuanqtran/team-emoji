@@ -175,8 +175,16 @@ footer {
 	text-align: center;
 }
 
+
 #themeButtons {
-	display: block;
+	display: inline-block;
+}
+
+#themeButtons h2 {
+	font-family: 'VT323', monospace;
+	font-size: 32px;
+	color: #ffffff;
+
 }
 
 #difficultyButtons {
@@ -212,14 +220,21 @@ footer {
 }
 
 #gameMessage {
-	font-family: 'Ubuntu Condensed', sans-serif;
-	font-size: 28px;
-	line-height: 24px;
-	color: #ffffff;
+	
 	vertical-align: middle;
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
+
+#gameMessage p {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 28px;
+	line-height: 24px;
+	color: #ffffff;
+	margin-bottom: 10px;
+
+}
+
 
 #gameTime {
 	font-family: 'VT323', monospace;
