@@ -131,9 +131,6 @@ footer {
 	padding-top: 20px;
 }
 
-.timer {
-	display: inline-block;
-}
 
 .guestLogin {
 	display: inline-block;
@@ -252,6 +249,7 @@ footer {
 	display: block;
 	margin-bottom: 20px;
 	margin-top: 40px;
+	text-align: left;
 }
 
 #gameLogo {
