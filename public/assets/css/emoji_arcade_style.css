@@ -187,6 +187,13 @@ footer {
 
 }
 
+#difficultyButtons h2 {
+	font-family: 'VT323', monospace;
+	font-size: 32px;
+	color: #ffffff;
+
+}
+
 #difficultyButtons {
 	display: none;
 }
@@ -221,14 +228,14 @@ footer {
 
 #gameMessage {
 	
-	vertical-align: middle;
+	vertical-align: left;
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
 
 #gameMessage p {
 	font-family: 'Ubuntu Condensed', sans-serif;
-	font-size: 28px;
+	font-size: 22px;
 	line-height: 24px;
 	color: #ffffff;
 	margin-bottom: 10px;

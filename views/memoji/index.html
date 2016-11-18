@@ -95,8 +95,8 @@
             <div id="gameMessage">
               <p>1) Choose your theme and difficulty level.</p>
               <p>2) Find matching pairs.</p>
-              <p>3)Watch out for the skull. It will shuffle the board.</p>
-              <p>4)Find Milo the sugar glider for a quick peek at the entire board.</p>
+              <p>3) Watch out for the skull. It will shuffle the board.</p>
+              <p>4) Find Milo the sugar glider for a quick peek at the entire board.</p>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ $(document).ready(function(){
 
 function chooseTheme() {
 
-  themeSelected = $(this).attr('val'); 
+  themeSelected = $(this).val(); 
 
   console.log("Theme: " + themeSelected);
   $('#themeButtons').css('display', 'none');
@@ -175,7 +175,7 @@ function chooseTheme() {
 }
 
 function chooseDifficulty() {
-  difficultySelected = $(this).attr('val'); 
+  difficultySelected = $(this).val(); 
   console.log("Difficulty: " + difficultySelected);
   $('#difficultyButtons').css('display', 'none');
   startGame(themeSelected, difficultySelected)
@@ -184,7 +184,7 @@ function chooseDifficulty() {
 
 function startGame(theme, difficulty) {
 
-  $('#gameMessage').html("Choose two matching cards");
+  $('#gameMessage').html("<p>Choose two matching cards</p>");
   $('.gameboard').empty();
 
   runTableQuery(theme, difficulty);
