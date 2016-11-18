@@ -88,16 +88,23 @@
 
 
 
-     <div class="row">
+      <div class="row">
         <div class="col s12 m4 l4">
           <div id="gameTime">
             <div class="Timer"></div>
             <div id="gameMessage">
-              <p>1) Choose your theme and difficulty level.</p>
-              <p>2) Find matching pairs.</p>
-              <p>3) Watch out for the skull. It will shuffle the board.</p>
-              <p>4) Find Milo the sugar glider for a quick peek at the entire board.</p>
+              <div class="instructionNumber">1</div>
+              <p>Choose your theme and difficulty level.</p>
+              <div class="instructionNumber">2</div>
+              <p>Find matching pairs.</p>
+              <div class="instructionNumber">3</div>
+              <p>Watch out for the skull. <bR>It will shuffle the board.</p>
+              <div class="instructionNumber">4</div>
+              <p>Find Milo the sugar glider for a quick peek at the entire board.</p>
             </div>
+
+            <div class="accuracyDiv"></div>
+            <div class="playAgain"></div>
           </div>
         </div>
 
@@ -139,6 +146,9 @@
 <script>
 
 $(document).ready(function(){
+
+  var themeSelected;
+  var difficultySelected;
 
   var themeCardsArray = [],
   firstCardValue = "",
@@ -353,6 +363,9 @@ var evaluateSecondClick = function(reference){
 // Increment incorrect matches then divide that number by level difficulty match. * 100.
 var calcAccuracy = function(){
   console.log(((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100));
+
+  accuracy = ((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100).toFixed(2);
+  $('.accuracyDiv').html('Accuracy: ' + accuracy + '%');
 }
 
 var match = function(){
@@ -360,17 +373,14 @@ var match = function(){
       calcAccuracy();
       clearInterval(timerCount);
       youWin();
-      $('#gameMessage').html("<h3>You Win!</h3>");
     }
 };
 
 var nonMatch = function(secondCardId){
-    console.log("Flip first card " + firstCardId);
-    flipCardBack(firstCardId);
-    console.log("Flip second card " + secondCardId);
-    flipCardBack(secondCardId);
-    // console.log(reference.attr("value"));
     $('#gameMessage').html("<h3>Not a match!</h3>");
+    setTimeout(function() {
+      $('#gameMessage').empty();
+    }, 1000);
     $("#" + firstCardId).removeAttr("disabled");
     firstCardId = "";
     secondCardId = "";
@@ -406,6 +416,9 @@ $(document).on("click", '.emoji-card', function(){
       if(reference.attr("value") == "z"){
         // Call Andrew.
         // Reveal all cards for one second. Then flip them back.
+
+        revealAll(difficultyNumber);
+
       }else if(reference.attr("value") == "y"){
         // Call Andrew again.
         // Cover the screen for a bit and then shuffle all cards.
@@ -426,6 +439,11 @@ $(document).on("click", '.emoji-card', function(){
             if(reference.attr("value") == firstCardValue){
               evaluateSecondClick(reference);
             }else{
+              secondCardId = reference.attr("id");
+              console.log("Flip first card " + firstCardId);
+              flipCardBack(firstCardId, 1000);
+              console.log("Flip second card " + secondCardId);
+              flipCardBack(secondCardId, 1000);
               nonMatch(secondCardId);
             }
         }  
@@ -451,7 +469,7 @@ $(document).on("click", '.emoji-card', function(){
     }
 
     // FLIP CARD BACK BELOW HERE
-    function flipCardBack(card) {
+    function flipCardBack(card, time) {
 
       setTimeout(function(){ 
         // console.log("five seconds" + card);
@@ -471,7 +489,7 @@ $(document).on("click", '.emoji-card', function(){
         setTimeout(function(){ $(cardImage).css('opacity','0'); },250)
 
         setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },500)
-      }, 1000);
+      }, time);
 
     }
 
@@ -492,12 +510,33 @@ $(document).on("click", '.emoji-card', function(){
       }, 100);
   };
 
+  
+  function revealAll(difficultyNumber) {
 
-  function youWin() {
+    var cards = (difficultyNumber + 2);
 
-    $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
+    for (i=1; i<=cards;i++) {
+      myCard = "#" + i;
+      if (myCard.attr("disabled") !== "disabled"){
+        flipCard(i);
+        flipCardBack(i, 5000);
+      }
+    }
+  }
 
 
+  function loadGame() {
+    $('#gameMessage').html('<div class="instructionNumber">1</div> <p>Choose your theme and difficulty level.</p><div class="instructionNumber">2</div><p>Find matching pairs.</p><div class="instructionNumber">3</div><p>Watch out for the skull. <bR>It will shuffle the board.</p><div class="instructionNumber">4</div><p>Find Milo the sugar glider for a quick peek at the entire board.</p>');
+    $('.gameboard').html('<div id="themeButtons"><h2>Choose your theme</h2><button type="button" class="themeSelector btn waves-effect" value="Animals">Animals</button><button type="button" class="themeSelector btn waves-effect" value="Flags">Flags</button><button type="button" class="themeSelector btn waves-effect" value="Random">Random</button></div><div id="difficultyButtons"><h2>Choose your Difficulty</h2><button type="button" class="difficultySelector btn waves-effect" value="easy">Easy</button><button type="button" class="difficultySelector btn waves-effect" value="medium">Medium</button><button type="button" class="difficultySelector btn waves-effect" value="hard">Hard</button></div>');
+    $('#difficultyButtons').removeAttr('display');
+    $('#themeButtons').removeAttr('display');
+    $('.accuracyDiv').empty();
+    $('.Timer').empty();
+  }
+
+  function playAgain() {
+    $('.playAgain').html("<button type='button' class='btn waves-effect' id='newGame'>Play Again</button>")
+    $('#newGame').on('click', loadGame);
   }
 
 });

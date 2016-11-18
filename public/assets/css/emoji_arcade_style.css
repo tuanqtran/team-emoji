@@ -125,12 +125,21 @@ footer {
 	transform: translate(-50%, -50%);
 }
 
+.instructionNumber {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 22px;
+	line-height: 22px;
+	color: #fdde67;
+	margin-bottom: 5px;
+	margin-top: 20px;
+	text-align: center;
+}
+
 .googleBlock {
 	display: inline-block;
 	text-align: center;
 	padding-top: 20px;
 }
-
 
 .guestLogin {
 	display: inline-block;
@@ -172,7 +181,6 @@ footer {
 	text-align: center;
 }
 
-
 #themeButtons {
 	display: inline-block;
 }
@@ -181,14 +189,12 @@ footer {
 	font-family: 'VT323', monospace;
 	font-size: 32px;
 	color: #ffffff;
-
 }
 
 #difficultyButtons h2 {
 	font-family: 'VT323', monospace;
 	font-size: 32px;
 	color: #ffffff;
-
 }
 
 #difficultyButtons {
@@ -236,7 +242,6 @@ footer {
 	color: #ffffff;
 	margin-bottom: 10px;
 	text-align: left;
-
 }
 
 #gameMessage h3 {
@@ -246,7 +251,6 @@ footer {
 	color: #ffffff;
 	margin-bottom: 10px;
 	text-align: center;
-
 }
 
 
@@ -264,10 +268,36 @@ footer {
 
 h3.youWin {
 	font-family: 'VT323', monospace;
-	font-size: 140px;
+	font-size: 110px;
 	line-height: 48px;
 	color: #ffffff;
 	margin-bottom: 20px;
+}
+
+.accuracyDiv {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 40px;
+	line-height: 44px;
+	color: #ffffff;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.playAgain {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.btn {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#newGame {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 22px;
+	color: #ffffff;
 }
 
 img.milo {
@@ -290,7 +320,6 @@ img.milo {
 	border: 1px solid #d58f09;
 }
 
-
 .face-up {
 	background: #FFFFFF;
 }
@@ -309,7 +338,6 @@ img.milo {
 
 #emoji-zoom {
 	padding: 30px;
-
 }
 
 #emojiContainer {
@@ -321,7 +349,6 @@ img.milo {
 	overflow:hidden;
 	box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.2);
 	pointer-events: none;
-
 }
 
 .emoji-clue {
@@ -531,13 +558,11 @@ img.game-icon-logo-small {
 .loginButton:hover{
 	color: #fdde67;
 	text-decoration: underline;
-
 }
 
 .hide{
 	display: none;
 }
-
 
 .memoji .row .col {
 	padding-bottom: 20px;
@@ -660,6 +685,69 @@ img.game-icon-logo-small {
 	    background: #FFFFFF; 
 	}
 }
+
+.nameOfThingtoFlipBack{
+	-webkit-animation: cardHide .5s linear;
+	-moz-animation: cardHide  .5s linear;
+	-o-animation: cardHide  .5s linear;
+	animation: cardHide  .5s linear;
+
+}
+
+@-webkit-keyframes cardHide  {
+    0%{
+	    -ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);  	
+    }
+    100%{
+    	-ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);  
+    }
+}
+@-moz-keyframes cardHide  {
+    0%{
+	    -ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);    
+
+    }
+    100%{
+    	-ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);  
+
+    }
+}
+@-o-keyframes cardHide  {
+    0%{
+	    -ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg);
+   	
+    }
+    100%{
+    	-ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg);  
+
+    }
+}
+@keyframes cardHide  { 
+    0%{
+	    -ms-transform: rotateY(0deg); /* IE 9 */
+	    -webkit-transform: rotateY(0deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(0deg); 
+
+    }
+    100%{
+    	-ms-transform: rotateY(180deg); /* IE 9 */
+	    -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+	    transform: rotateY(180deg); 
+	}
+}
+
 
 @-webkit-keyframes pulse {
     0%{opacity:1;}
