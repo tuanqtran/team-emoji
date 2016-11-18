@@ -524,6 +524,12 @@ $(document).on("click", '.emoji-card', function(){
     }
   }
 
+  function youWin() {
+    playAgain() ;
+    $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
+    $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
+  }
+
 
   function loadGame() {
     $('#gameMessage').html('<div class="instructionNumber">1</div> <p>Choose your theme and difficulty level.</p><div class="instructionNumber">2</div><p>Find matching pairs.</p><div class="instructionNumber">3</div><p>Watch out for the skull. <bR>It will shuffle the board.</p><div class="instructionNumber">4</div><p>Find Milo the sugar glider for a quick peek at the entire board.</p>');
