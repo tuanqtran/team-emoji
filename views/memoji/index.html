@@ -340,8 +340,11 @@ var evaluateSecondClick = function(reference){
     secondCardId = reference.attr("id");
     $("#" + secondCardId).attr("disabled", 'disabled');
     $('#gameMessage').html("<h3>There's a match!</h3>");
+    $("#" + firstCardId).css('opacity','.4');
+    $("#" + secondCardId).css('opacity','.4');
     firstCardId = "";
     firstClick = false;
+    secondCardId = "";
     matchScore++;
     match();
 };
@@ -354,6 +357,8 @@ var calcAccuracy = function(){
 var match = function(){
     if(matchScore == calcWinScore(difficultyNumber)){
       calcAccuracy();
+      clearInterval(timerCount);
+      youWin();
       $('#gameMessage').html("<h3>You Win!</h3>");
     }
 };
@@ -485,11 +490,19 @@ $(document).on("click", '.emoji-card', function(){
           seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
           cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
       };
-      setInterval(function() {
+      timerCount = setInterval(function() {
           counter++;
           format(counter);
       }, 100);
   };
+
+
+  function youWin() {
+
+    $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
+
+
+  }
 
 });
 

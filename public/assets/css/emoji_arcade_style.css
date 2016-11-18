@@ -262,6 +262,18 @@ footer {
 	text-align: center;
 }
 
+h3.youWin {
+	font-family: 'VT323', monospace;
+	font-size: 140px;
+	line-height: 48px;
+	color: #ffffff;
+	margin-bottom: 20px;
+}
+
+img.milo {
+	width: 90%;
+}
+
 #gameLogo {
 	padding-top: 10px;
 	text-align: center;
