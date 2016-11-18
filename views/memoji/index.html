@@ -417,6 +417,9 @@ $(document).on("click", '.emoji-card', function(){
         // Call Andrew.
         // Reveal all cards for one second. Then flip them back.
 
+        var referenceCardDiv = "#" + referenceCard;
+        $(referenceCardDiv).css('background','#EF509D');
+
         revealAll(difficultyNumber);
 
       }else if(reference.attr("value") == "y"){
