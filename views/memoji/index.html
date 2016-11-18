@@ -146,23 +146,23 @@
 <script>
 
 $(document).ready(function(){
-
-  var themeSelected;
-  var difficultySelected;
-
   var themeCardsArray = [],
-  firstCardValue = "",
-  firstCardId = "",
-  secondCardId = "",
-  firstClick = false,
-  matchScore = 0,
-  difficultyValue = "",
-  difficultyNumber = 0,
-  incorrect = 0,
-  tableData = "",
-  emojiObjects = [],
-  theme = "",
-  difficulty = "";
+      firstCardValue = "",
+      firstCardId = "",
+      secondCardId = "",
+      firstClick = false,
+      matchScore = 0,
+      difficultyValue = "",
+      difficultyNumber = 0,
+      incorrect = 0,
+      tableData = "",
+      emojiObjects = [],
+      theme = "",
+      difficulty = "",
+      themeSelected = "",
+      difficultySelected = "";
+
+  var skullLaughter = new Audio("/static/sounds/evil-laugh.mp3");
 
   
   $('.modal-trigger').leanModal();
@@ -534,13 +534,13 @@ $(document).on("click", '.emoji-card', function(){
       $(skullDiv).attr('class', 'skull-overlay'); 
       $(skullContainer).append(skullDiv);
       $('html').append(skullContainer);
-      $('.skull-overlay').html('<img src="/static/images/emojisvg/skull.svg" width="90%">');
+      $('.skull-overlay').html('<img class="skullHead" src="/static/images/emojisvg/skull.svg" width="90%">');
+      skullLaughter.play();
 
     setTimeout(function(){ 
       $('#skull-container').empty()
 
-    },8000)
-    
+    }, 4000) 
   }
 
 

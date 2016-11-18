@@ -525,17 +525,100 @@ img.game-icon-logo-small {
 }
 
 .skull-overlay {
-  position: fixed;
-  z-index: 999;
-  top: -100px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 125%;
-  width: 100%;
-  background: #000;
-  will-change: opacity;
-  text-align: center;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	will-change: opacity;
+	text-align: center;
+}
+
+.skullHead{
+	-webkit-animation: shake 1s linear infinite;
+	-moz-animation: shake 1s linear infinite;
+	-o-animation: shake 1s linear infinite;
+	animation: shake 1s linear infinite;
+}
+@-webkit-keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+	opacity: 0;
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+	opacity: 1;
+  }
+}
+@-moz-keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+	opacity: 0;
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+	opacity: 1;
+  }
+}
+@-o-keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+	opacity: 0;
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+	opacity: 1;
+  }
+}
+@keyframes shake { 
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+	opacity: 0;
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+	opacity: 1;
+  }
 }
 
 .devTeam {
