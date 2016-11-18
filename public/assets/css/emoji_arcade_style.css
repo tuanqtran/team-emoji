@@ -227,8 +227,7 @@ footer {
 }
 
 #gameMessage {
-	
-	vertical-align: left;
+	text-align: left;
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
@@ -239,6 +238,7 @@ footer {
 	line-height: 24px;
 	color: #ffffff;
 	margin-bottom: 10px;
+	text-align: left;
 
 }
 

@@ -143,6 +143,20 @@ $(document).ready(function(){
   var themeSelected;
   var difficultySelected;
 
+  var initialTest = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m","n" ,"o" ,"p" ,"q" ,"r" ,"s" ,"t" ,"u" ,"v" ,"w" ,"x" ,"y", "z"],
+  skullMilo = ["skull", "milo"],
+  themeCardsArray = [],
+  firstCardValue = "",
+  firstCardId = "",
+  secondCardId = "",
+  firstClick = false,
+  matchScore = 0,
+  difficultyValue = "",
+  difficultyNumber = 0,
+  incorrect = 0,
+    tableData = "",
+    emojiObjects = [];
+
   
   $('.modal-trigger').leanModal();
 
