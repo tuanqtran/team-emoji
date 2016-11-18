@@ -517,6 +517,10 @@ img.game-icon-logo-small {
 }
 
 
+.memoji .row .col {
+	padding-bottom: 20px;
+}
+
 /* lower opactiy on timer */
 
 .randomName{

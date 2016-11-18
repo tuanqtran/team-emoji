@@ -320,7 +320,7 @@ var shuffleArray = function(array){
 
 var renderCards = function(array){
   for(i=0;i<themeCardsArray.length; i++){
-        $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + '><img class= "emoji" id = "card-' + (i+1) + "src='/static/images/emojisvg/" + themeCardsArray[i].file_name + '"/>' + "</div></div>")
+        $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
   }    
 
   runTimer();        
@@ -354,15 +354,17 @@ var calcAccuracy = function(){
 var match = function(){
     if(matchScore == calcWinScore(difficultyNumber)){
       calcAccuracy();
-      $('#gameMessage').html("You Win!");
+      $('#gameMessage').html("<p>You Win!</p>");
     }
 };
 
 var nonMatch = function(reference){
+    console.log("Flip first card " + firstCardId);
     flipCardBack(firstCardId);
+    console.log("Flip second card " + secondCardId);
     flipCardBack(secondCardId);
     console.log(reference.attr("value"));
-    $('#gameMessage').html("Not a match!");
+    $('#gameMessage').html("<p>Not a match!</p>");
     $("#" + firstCardId).removeAttr("disabled");
     firstCardId = "";
     secondCardId = "";
@@ -372,7 +374,8 @@ var nonMatch = function(reference){
 
 var disableSpecialCard = function(reference){
     reference.attr("disabled", 'disabled');
-    $('#gameMessage').html("You picked a special card " + reference.attr("value"));
+    $('#gameMessage').html("<p>You picked a special card " + reference.attr("value") + 
+      "</p>");
 };
 
 var resetFirstClick = function(){
@@ -460,7 +463,7 @@ $(document).on("click", '.emoji-card', function(){
         setTimeout(function(){ $(cardImage).css('opacity','0'); },250)
 
         setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },250)
-      }, 5000);
+      }, 1000);
 
     }
 
