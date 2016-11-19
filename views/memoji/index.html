@@ -1,605 +1,584 @@
 <!DOCTYPE html>
 <html lang="en" class="">
+
 <head>
     <meta charset="UTF-8">
     <title>Memoji || Emoji Arcade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <!-- Reference to reset.min css sheet. --> 
+    <!-- Reference to reset.min css sheet. -->
     <link rel="stylesheet" type="text/css" href="/static/css/reset.min.css">
     <!-- add jQuery -->
-      <!-- Reference to jQuery version 2.2.3. -->
-    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"
-    ></script>
+    <!-- Reference to jQuery version 2.2.3. -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <!-- Reference to materialize css sheet. -->
     <link rel="stylesheet" type="text/css" href="/static/css/materialize.css">
     <!-- Reference to Materialize.min javascript sheet. -->
     <script src="/static/js/materialize.js"></script>
-    <!-- Reference to app style sheet. -->  
+    <!-- Reference to app style sheet. -->
     <link rel="stylesheet" type="text/css" href="/static/css/emoji_arcade_style.css">
-      <!-- Reference to index.js -->
-   
+    <!-- Reference to index.js -->
     <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!-- Add Google Web Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
-
-      <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-      <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Add Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-  <div class="container home">     
-
-    <header>
-      <div class="row">
-        <div class="col s12 m4 l4">
-          <img src="/static/images/memoji-logo-small.png" width="200px" class="minigame-logo">
-
-        </div>
-
-        <div class="col s12 m4 l4"  id="welcome">
-          Welcome, Player!
-        </div>
-
-        <div class="col s12 m4 l4" id="nav">
-            <!--<a href="/memoji/new"><img src="../images/start.png" width="80"></a> -->
-            <a class="waves-effect modal-trigger" href="#modalScores">
-            <img src="/static/images/scores.png" width="80" class="scores-button">
-            </a> 
-            <button type="button" name="sound-toggle" value="on" class="sound-toggle"><img src="/static/images/sound-on.png" width="40px" class="sound-icon"></button>
-
-                      <div id="modalScores" class="modal">
+    <div class="container home">
+        <header>
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <img src="/static/images/memoji-logo-small.png" width="200px" class="minigame-logo">
+                </div>
+                <div class="col s12 m4 l4" id="welcome">
+                    Welcome, Player!
+                </div>
+                <div class="col s12 m4 l4" id="nav">
+                    <!--<a href="/memoji/new"><img src="../images/start.png" width="80"></a> -->
+                    <a class="waves-effect modal-trigger" href="#modalScores">
+                        <img src="/static/images/scores.png" width="80" class="scores-button">
+                    </a>
+                    <button type="button" name="sound-toggle" value="on" class="sound-toggle"><img src="/static/images/sound-on.png" width="40px" class="sound-icon"></button>
+                    <div id="modalScores" class="modal">
                         <div class="modal-content">
-                          <h4 class="modal-title">High Scores</h4>
-                          <div class="row high-score-row">
-                            <div class="col s4">seeksort</div>
-                            <div class="col s4 score-num">865</div>
-                            <div class="col s4">11/17/16</div>
-                          </div>
-
-                          <div class="row high-score-row">
-                            <div class="col s4">tuantran1122</div>
-                            <div class="col s4 score-num">745</div>
-                            <div class="col s4">11/17/16</div>
-                          </div>
-
-                          <div class="row high-score-row">
-                            <div class="col s4">brandon_s </div>
-                            <div class="col s4 score-num">675</div>
-                            <div class="col s4">11/17/16</div>
-                          </div>
-
-                          <div class="row high-score-row">
-                            <div class="col s4">marcus-lam</div>
-                            <div class="col s4 score-num">545</div>
-                            <div class="col s4">11/17/16</div>
-                          </div>
-
-                          <div class="row high-score-row">
-                            <div class="col s4">shabbyveneer</div>
-                            <div class="col s4 score-num">2</div>
-                            <div class="col s4">11/17/16</div>
-                          </div>
+                            <h4 class="modal-title">Leaderboard</h4>
+                            <div class="row high-score-row">
+                                <div class="col s4 player_name">
+                                    <h3>Name</h3></div>
+                                <div class="col s4 score-num time">
+                                    <h3>Time</h3></div>
+                                <div class="col s4 score-num accuracy">
+                                    <h3>Accuracy</h3></div>
+                            </div>
+                            <div class="players"></div>
                         </div>
-                      </div>   
-        </div>       
-      </div>
-    </header>
-
-   <main class="memoji">
-
-
-
-      <div class="row">
-        <div class="col s12 m4 l4">
-          <div id="gameTime">
-            <div class="Timer"></div>
-            <div id="gameMessage">
-              <div class="instructionNumber">1</div>
-              <p>Choose your theme and difficulty level.</p>
-              <div class="instructionNumber">2</div>
-              <p>Find matching pairs.</p>
-              <div class="instructionNumber">3</div>
-              <p>Watch out for the skull. <bR>He will do anything to stand in your way.</p>
-              <div class="instructionNumber">4</div>
-              <p>Find Milo the sugar glider for a quick peek at the entire board.</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="accuracyDiv"></div>
-            <div class="playAgain"></div>
-          </div>
+        </header>
+        <main class="memoji">
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <div id="gameTime">
+                        <div class="Timer"></div>
+                        <div id="gameMessage">
+                            <div class="instructionNumber">1</div>
+                            <p>Choose your theme and difficulty level.</p>
+                            <div class="instructionNumber">2</div>
+                            <p>Find matching pairs.</p>
+                            <div class="instructionNumber">3</div>
+                            <p>Watch out for the skull.
+                                <bR>He will do anything to stand in your way.</p>
+                            <div class="instructionNumber">4</div>
+                            <p>Find Milo the sugar glider for a quick peek at the entire board.</p>
+                        </div>
+                        <div class="accuracyDiv"></div>
+                        <div class="playAgain"></div>
+                    </div>
+                </div>
+                <div class="col s12 m8 l8 gameboard">
+                    <div id="themeButtons">
+                        <h2>Choose your theme</h2>
+                        <button type="button" class="themeSelector btn waves-effect" value="Animals" id="theme-a">Animals</button>
+                        <button type="button" class="themeSelector btn waves-effect" value="Flags" id="theme-f">Flags</button>
+                        <button type="button" class="themeSelector btn waves-effect" value="Random" id="theme-r">Random</button>
+                    </div>
+                    <div id="difficultyButtons">
+                        <h2>Choose your Difficulty</h2>
+                        <button type="button" class="difficultySelector btn waves-effect" value="easy" id="diff-e">Easy</button>
+                        <button type="button" class="difficultySelector btn waves-effect" value="medium" id="diff-m">Medium</button>
+                        <button type="button" class="difficultySelector btn waves-effect" value="hard" id="diff-h">Hard</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="row">
+                <div class="col s6 m6 l4">
+                </div>
+                <div class="col s6 m6 l4">
+                </div>
+                <div class="col s12 m12 l4" id="gameLogo">
+                    <a href="/"><img src="/static/images/ea-logo-2.png" width="150px"></a>
+                </div>
+        </footer>
+        <div id="skull-container"></div>
         </div>
+        <script>
+        $(document).ready(function() {
 
-        <div class="col s12 m8 l8 gameboard">
-
-          <div id="themeButtons">
-            <h2>Choose your theme</h2>
-              <button type="button" class="themeSelector btn waves-effect" value="Animals" id="theme-a">Animals</button>
-              <button type="button" class="themeSelector btn waves-effect" value="Flags" id="theme-f">Flags</button>
-              <button type="button" class="themeSelector btn waves-effect" value="Random" id="theme-r">Random</button>
-          </div>
-          <div id="difficultyButtons">
-            <h2>Choose your Difficulty</h2>
-              <button type="button" class="difficultySelector btn waves-effect" value="easy" id="diff-e">Easy</button>
-              <button type="button" class="difficultySelector btn waves-effect" value="medium"  id="diff-m">Medium</button>
-              <button type="button" class="difficultySelector btn waves-effect" value="hard"  id="diff-h">Hard</button>
-          </div>
-                  
-        </div>
-      </div>
-   </main>
-
-     <footer>
-       <div class="row">
-        <div class="col s6 m6 l4" >
-        </div>
-
-        <div class="col s6 m6 l4">
-        </div>
-
-         <div class="col s12 m12 l4" id="gameLogo">
-          <a href="/"><img src="/static/images/ea-logo-2.png" width="150px"></a>
-        </div>
-
-    </footer> 
-
-      <div id="skull-container"></div>
-
-  </div>
-
-<script>
-
-$(document).ready(function(){
-  var themeCardsArray = [],
-      firstCardValue = "",
-      firstCardId = "",
-      secondCardId = "",
-      firstClick = false,
-      matchScore = 0,
-      difficultyValue = "",
-      difficultyNumber = 0,
-      incorrect = 0,
-      tableData = "",
-      emojiObjects = [],
-      theme = "",
-      difficulty = "",
-      themeSelected = "",
-      difficultySelected = "";
-
-  var skullLaughter = new Audio("/static/sounds/evil-laugh.mp3");
-
-  
-  $('.modal-trigger').leanModal();
-
-  $('.themeSelector').on('click', chooseTheme);
-
-  $('.difficultySelector').on('click', chooseDifficulty);
+            var themeCardsArray = [],
+                firstCardValue = "",
+                firstCardId = "",
+                secondCardId = "",
+                firstClick = false,
+                matchScore = 0,
+                difficultyValue = "",
+                difficultyNumber = 0,
+                incorrect = 0,
+                tableData = "",
+                emojiObjects = [],
+                theme = "",
+                difficulty = "",
+                themeSelected = "",
+                difficultySelected = "",
+                endingTime = "",
+                accuracy = 0;
+            var skullLaughter = new Audio("/static/sounds/evil-laugh.mp3");
+            var correctSound = new Audio("/static/sounds/correct.mp3");
 
 
+            $('.modal-trigger').leanModal();
 
+            $('.themeSelector').on('click', chooseTheme);
 
-// var easyArrayTiles = [], // 24 tiles
-  // mediumArrayTiles = [], // 36 tiles.
-  // hardArrayTiles = []; // 48 tiles.
+            $('.difficultySelector').on('click', chooseDifficulty);
 
-// Skull Milo Card 
-// Skull card = 1 if flipped. Punishes them by randomizing the board
-// Skull card when both cards are displayed you lose.
-// Milo card = 1 if flipped. Rewards them by flipping all cards for 1 second.
-// Milo card gives a bonus.
-// A and B will be the skull/milo cards. Does not required to be filed to win/lose.
+            function chooseTheme() {
 
+                theme = $(this).val();
 
-function chooseTheme() {
-
-  theme = $(this).val(); 
-
-  console.log("Theme: " + theme);
-  $('#themeButtons').css('display', 'none');
-  $('#difficultyButtons').css('display', 'inline-block');
-}
-
-function chooseDifficulty() {
-  difficulty = $(this).val(); 
-  console.log("Difficulty: " + difficulty);
-  $('#difficultyButtons').css('display', 'none');
-  startGame(theme, difficulty)
-}
-
-function startGame(theme, difficulty) {
-
-  $('#gameMessage').html("<h3>Choose two matching cards</h3>");
-  $('.gameboard').empty();
-
-  runTableQuery(theme, difficulty);
-}
-
-function runTableQuery(theme, difficulty){
-  // Here we get the location of the root page.
-  // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-  var currentURL = window.location.origin;
-
-  // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-  $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
-    .done(function(data) {
-      console.log("Run Ajax for Theme");
-      tableData = data;
-      console.log(tableData);
-      for(var i = 0; i<tableData.length;i++){
-        emojiObjects.push(tableData[i]);
-      }
-      initDeck();
-    }).then(function() {
-      console.log("Run Difficulty Selection");
-      difficultySelection(difficulty);
-    });
-}
-
-var calcWinScore = function(difficultyNumber){
-  return (difficultyNumber / 2);
-};
-
-var initDeck = function(){
-  for(var i=0; i<emojiObjects.length; i++){
-    themeCardsArray.push(emojiObjects[i], emojiObjects[i]);
-  }
-  console.log("Emojis has been pushed. Excluding special cards.");
-};
-
-var difficultySelection = function(difficultyValue){
-
-  console.log("Difficulty Selection Running");
-  // Select difficulty
-  switch(difficultyValue) {
-      case "easy":
-      // 22 indicates 11 pairs of cards excluding the milo/skull special cards for this difficulty case.
-          difficultyNumber = 22;
-          calcWinScore(difficultyNumber);
-      difficultyLevel(difficultyNumber);          
-          break;
-      case "medium":
-      // 34 indicates 17 pairs of cards.
-          difficultyNumber = 34;
-          calcWinScore(difficultyNumber);
-      difficultyLevel(difficultyNumber);
-          break;
-      case "hard":
-      // 46 indicates 23 pairs of cards.
-          difficultyNumber = 46;
-          calcWinScore(difficultyNumber);
-      difficultyLevel(difficultyNumber);          
-          break;
-      default:
-          console.log("Difficulty not selected."); 
-  }
-};
-
-var difficultyLevel = function(difficultyNumber){
-  // Three difficulty levels.
-  // Easy = 22 choices
-  // Medium = 34 choices
-  // Hard = 46 choices
-  // Manipulate theme cards array and push into the actualDeck
-  themeCardsArray.splice(difficultyNumber);
-  console.log(themeCardsArray);
-  specialCards(themeCardsArray);
-};
-
-var specialCards = function(themeCardsArray){
-
-  // Put in orm function for skull/milo.
-  // for(var i=0; i<skullMilo.length; i++){
-  //   themeCardsArray.push(skullMilo[i]);
-  // }
-  var currentURL = window.location.origin;
-
-  // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-  $.ajax({url: currentURL + "/special", method: "GET"})
-    .done(function(data) {
-      console.log("Run Ajax for Special Cards");
-      tableData = data;
-      console.log(tableData);
-      for(var i = 0; i<tableData.length;i++){
-        themeCardsArray.push(tableData[i]);
-      }
-    }).then(function() {
-      // Before shuffle result.
-      console.log(themeCardsArray);
-      // Shuffling cards.
-      shuffleArray(themeCardsArray);
-      // After shuffle result.
-      console.log(themeCardsArray); 
-    });
-};
-
-/**
- * Randomize array element order in-place.
- * Using Durstenfeld shuffle algorithm.
- */
-var shuffleArray = function(array){
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    renderCards(array);
-    return array;
-};
-
-
-
-var renderCards = function(array){
-  for(i=0;i<themeCardsArray.length; i++){
-        // $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
-        var appendObject = "<div class='col s4 m2 l2'>";
-        appendObject += "<div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'>"
-        appendObject += "<img src='/static/images/emoji/game/qm.png' class='qm' id='qm-" + (i + 1) + "'>";
-        appendObject += "<img class='emoji' id='card-" + (i + 1) + "' src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "'>";
-        appendObject += "</div></div>";
-        $(".gameboard").append(appendObject);  
-  }    
-
-  runTimer();        
-};
-
-
-var evaluateFirstClick = function(reference){
-    firstCardValue = reference.attr("value");
-    firstCardId = reference.attr("id");
-    $("#" + firstCardId).attr("disabled", 'disabled');
-    console.log("First " + firstCardValue);
-    firstClick = true;
-};
-
-var evaluateSecondClick = function(reference){
-    console.log("Second " + firstCardValue);
-    secondCardId = reference.attr("id");
-    $("#" + secondCardId).attr("disabled", 'disabled');
-    $('#gameMessage').html("<h3>There's a match!</h3>");
-    $("#" + firstCardId).css('opacity','.4');
-    $("#" + secondCardId).css('opacity','.4');
-    firstCardId = "";
-    firstClick = false;
-    secondCardId = "";
-    matchScore++;
-    match();
-};
-
-// Increment incorrect matches then divide that number by level difficulty match. * 100.
-var calcAccuracy = function(){
-  console.log(((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100));
-
-  accuracy = ((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100).toFixed(2);
-  $('.accuracyDiv').html('Accuracy: ' + accuracy + '%');
-}
-
-var match = function(){
-    if(matchScore == calcWinScore(difficultyNumber)){
-      calcAccuracy();
-      clearInterval(timerCount);
-      youWin();
-    }
-};
-
-var nonMatch = function(secondCardId){
-    $('#gameMessage').html("<h3>Not a match!</h3>");
-    setTimeout(function() {
-      $('#gameMessage').empty();
-    }, 1000);
-    $("#" + firstCardId).removeAttr("disabled");
-    firstCardId = "";
-    secondCardId = "";
-    firstClick = false;
-    incorrect++
-};
-
-var disableSpecialCard = function(reference){
-    flipCardBack(firstCardId);
-    reference.attr("disabled", 'disabled');
-    $('#gameMessage').html("<h3>You picked a special card!</h3>");
-};
-
-var resetFirstClick = function(){
-  $("#" + firstCardId).removeAttr("disabled");
-  firstClick = false;
-};
- 
-$(document).on("click", '.emoji-card', function(){
-  var reference = $(this); 
-
-  var referenceCard = $(this).attr('id'); 
-
-   
-
-    if(reference.attr("disabled") !== "disabled"){
-       flipCard(referenceCard);
-        // Milo/Skull Logic
-        if(reference.attr("value") == "y" || reference.attr("value") == "z"){
-          // Disables the milo/skull cards.
-          disableSpecialCard(reference);
-      
-      if(reference.attr("value") == "z"){
-        // Call Andrew.
-        // Reveal all cards for one second. Then flip them back.
-        $("#" + referenceCard).css('background-color', '#000000 !important');
-        revealAll(difficultyNumber);
-
-      }else if(reference.attr("value") == "y"){
-        // Call Andrew again.
-        // Cover the screen for a bit and then shuffle all cards.
-        // Display a message stating all cards have been shuffled.
-        skullMaster();
-      }
-      // Resets the first click.
-      if(firstClick == true){
-        resetFirstClick();
-          }
-        }
-        // Everything else. Lol
-        else if(firstClick == false){
-          // First Click.
-          evaluateFirstClick(reference);
-        }else if(firstClick == true){
-          secondCardId = reference.attr("id");
-          // Evaluate second click for match.
-            if(reference.attr("value") == firstCardValue){
-              evaluateSecondClick(reference);
-            }else{
-              secondCardId = reference.attr("id");
-              console.log("Flip first card " + firstCardId);
-              flipCardBack(firstCardId, 1000);
-              console.log("Flip second card " + secondCardId);
-              flipCardBack(secondCardId, 1000);
-              nonMatch(secondCardId);
+                console.log("Theme: " + theme);
+                $('#themeButtons').css('display', 'none');
+                $('#difficultyButtons').css('display', 'inline-block');
             }
-        }  
-    }
-});
 
-    // Flip Card
-    function flipCard(cardSelected) {
-      // console.log("Flip Card " + cardSelected);
-      var cardQM = "#qm-" + cardSelected;
-      var cardImage = "#card-" + cardSelected;
-      var cardDiv = "#" + cardSelected;
+            function chooseDifficulty() {
+                difficulty = $(this).val();
+                console.log("Difficulty: " + difficulty);
+                $('#difficultyButtons').css('display', 'none');
+                startGame(theme, difficulty)
+            }
 
-      $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlip');
+            function startGame(theme, difficulty) {
 
-      $(cardQM).attr('class', 'qm show-card');
+                $('#gameMessage').html("<h3>Choose two matching cards</h3>");
+                $('.gameboard').empty();
 
-      $(cardDiv).css('background','radial-gradient(#f6bf00, #f4ad01)');
-      setTimeout(function(){ $(cardDiv).css('background','#FFFFFF'); },500)
+                runTableQuery(theme, difficulty);
+            }
 
-      $(cardImage).css('opacity','0)');
-      setTimeout(function(){  $(cardImage).css('opacity','1'); },250);  
-    }
+            function runTableQuery(theme, difficulty) {
+                // Here we get the location of the root page.
+                // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+                var currentURL = window.location.origin;
 
-    // FLIP CARD BACK BELOW HERE
-    function flipCardBack(card, time) {
+                // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+                $.ajax({
+                        url: currentURL + "/data/" + theme,
+                        method: "GET"
+                    })
+                    .done(function(data) {
+                        console.log("Run Ajax for Theme");
+                        tableData = data;
+                        console.log(tableData);
+                        for (var i = 0; i < tableData.length; i++) {
+                            emojiObjects.push(tableData[i]);
+                        }
+                        initDeck();
+                    }).then(function() {
+                        console.log("Run Difficulty Selection");
+                        difficultySelection(difficulty);
+                    });
+            }
 
-      setTimeout(function(){ 
-        // console.log("five seconds" + card);
+            var calcWinScore = function(difficultyNumber) {
+                return (difficultyNumber / 2);
+            };
 
-        var cardQM = "#qm-" + card;
-        var cardImage = "#card-" + card;
-        var cardDiv = "#" + card;
+            var initDeck = function() {
+                for (var i = 0; i < emojiObjects.length; i++) {
+                    themeCardsArray.push(emojiObjects[i], emojiObjects[i]);
+                }
+                console.log("Emojis has been pushed. Excluding special cards.");
+            };
 
-        $(cardDiv).removeAttr("disabled");
+            var difficultySelection = function(difficultyValue) {
 
-        $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlipBack');
-       
-        $(cardDiv).css('background','#FFFFFF');
-        setTimeout(function(){ $(cardDiv).css('background','radial-gradient(#f6bf00, #f4ad01)') },500);
+                console.log("Difficulty Selection Running");
+                // Select difficulty
+                switch (difficultyValue) {
+                    case "easy":
+                        // 22 indicates 11 pairs of cards excluding the milo/skull special cards for this difficulty case.
+                        difficultyNumber = 4;
+                        calcWinScore(difficultyNumber);
+                        difficultyLevel(difficultyNumber);
+                        break;
+                    case "medium":
+                        // 34 indicates 17 pairs of cards.
+                        difficultyNumber = 34;
+                        calcWinScore(difficultyNumber);
+                        difficultyLevel(difficultyNumber);
+                        break;
+                    case "hard":
+                        // 46 indicates 23 pairs of cards.
+                        difficultyNumber = 46;
+                        calcWinScore(difficultyNumber);
+                        difficultyLevel(difficultyNumber);
+                        break;
+                    default:
+                        console.log("Difficulty not selected.");
+                }
+            };
 
-        $(cardImage).css('opacity','1)');
-        setTimeout(function(){ $(cardImage).css('opacity','0'); },250)
+            var difficultyLevel = function(difficultyNumber) {
+                // Three difficulty levels.
+                // Easy = 22 choices
+                // Medium = 34 choices
+                // Hard = 46 choices
+                // Manipulate theme cards array and push into the actualDeck
+                themeCardsArray.splice(difficultyNumber);
+                console.log(themeCardsArray);
+                specialCards(themeCardsArray);
+            };
 
-        setTimeout(function(){ $(cardQM).attr('class', 'qm hide-card'); },500)
-      }, time);
+            var specialCards = function(themeCardsArray) {
 
-    }
+                // Put in orm function for skull/milo.
+                // for(var i=0; i<skullMilo.length; i++){
+                //   themeCardsArray.push(skullMilo[i]);
+                // }
+                var currentURL = window.location.origin;
 
-     // Timer
-  function runTimer() {
-      var counter = 0,
-          cDisplay = $(".Timer");
-      format = function(t) {
-          var minutes = Math.floor(t / 600),
-              seconds = Math.floor((t / 10) % 60);
-          minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
-          seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
-          cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
-      };
-      timerCount = setInterval(function() {
-          counter++;
-          format(counter);
-      }, 100);
-  };
+                // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+                $.ajax({
+                        url: currentURL + "/special",
+                        method: "GET"
+                    })
+                    .done(function(data) {
+                        console.log("Run Ajax for Special Cards");
+                        tableData = data;
+                        console.log(tableData);
+                        for (var i = 0; i < tableData.length; i++) {
+                            themeCardsArray.push(tableData[i]);
+                        }
+                    }).then(function() {
+                        // Before shuffle result.
+                        console.log(themeCardsArray);
+                        // Shuffling cards.
+                        shuffleArray(themeCardsArray);
+                        // After shuffle result.
+                        console.log(themeCardsArray);
+                    });
+            };
 
-
-  function revealAll(difficultyNumber) {
-    var cards = (difficultyNumber + 2);
-    for (i=1; i<=cards;i++) {
-      var myCard = "#" + i;
-      if ($(myCard).attr("disabled") !== "disabled"){
-        flipCard(i);
-        flipCardBack(i, 5000);
-      }
-    }  
-  }
-
-  function skullMaster() {
-
-      
-
-      skullDiv = document.createElement('div');
-      $(skullDiv).attr('class', 'skull-overlay'); 
-      $('#skull-container').html(skullDiv);
-      $('.skull-overlay').html('<img class="skullHead" src="/static/images/emojisvg/skull.svg" width="90%">');
-      skullLaughter.play();
-
-    setTimeout(function(){ 
-      $('#skull-container').empty()
-
-    }, 4000) 
-
-
-   
-  }
-
-
-  function youWin() {
-    playAgain() ;
-    $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
-    $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
-  }
+            /**
+             * Randomize array element order in-place.
+             * Using Durstenfeld shuffle algorithm.
+             */
+            var shuffleArray = function(array) {
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+                renderCards(array);
+                return array;
+            };
 
 
-  function loadGame() {
 
-    themeCardsArray = [];
-      firstCardValue = "";
-      firstCardId = "";
-      secondCardId = "";
-      firstClick = false;
-      matchScore = 0;
-      difficultyValue = "";
-      difficultyNumber = 0;
-      incorrect = 0;
-      tableData = "";
-      emojiObjects = [];
-      theme = "";
-      difficulty = "";
-      themeSelected = "";
-      difficultySelected = "";
-    $('#gameMessage').html('<div class="instructionNumber">1</div> <p>Choose your theme and difficulty level.</p><div class="instructionNumber">2</div><p>Find matching pairs.</p><div class="instructionNumber">3</div><p>Watch out for the skull. <bR>He will do anything to stand in your way.</p><div class="instructionNumber">4</div><p>Find Milo the sugar glider for a quick peek at the entire board.</p>');
-    $('.gameboard').html('<div id="themeButtons"><h2>Choose your theme</h2><button type="button" class="themeSelector btn waves-effect" value="Animals"  id="theme-a">Animals</button><button type="button" class="themeSelector btn waves-effect" value="Flags"  id="theme-f">Flags</button><button type="button" class="themeSelector btn waves-effect" value="Random"  id="theme-r">Random</button></div><div id="difficultyButtons"><h2>Choose your Difficulty</h2><button type="button" class="difficultySelector btn waves-effect" value="easy"   id="diff-e">Easy</button><button type="button" class="difficultySelector btn waves-effect" value="medium" id="diff-m">Medium</button><button type="button" class="difficultySelector btn waves-effect" value="hard" id="diff-h">Hard</button></div>');
-    $('#difficultyButtons').removeAttr('display');
-    $('#themeButtons').removeAttr('display');
-    $('.accuracyDiv').empty();
-    $('.Timer').empty();
+            var renderCards = function(array) {
+                for (i = 0; i < themeCardsArray.length; i++) {
+                    // $(".gameboard").append("<div class='col s4 m2 l2'> <div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'> <img src=' /static/images/emoji/game/qm.png' class='qm' id='qm-"+ (i + 1) + "'><img class='emoji'  src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "' id='card-" + (i+1) + "'></div></div>")
+                    var appendObject = "<div class='col s4 m2 l2'>";
+                    appendObject += "<div class='emoji-card face-down' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'>"
+                    appendObject += "<img src='/static/images/emoji/game/qm.png' class='qm' id='qm-" + (i + 1) + "'>";
+                    appendObject += "<img class='emoji' id='card-" + (i + 1) + "' src='/static/images/emojisvg/" + themeCardsArray[i].file_name + "'>";
+                    appendObject += "</div></div>";
+                    $(".gameboard").append(appendObject);
+                }
 
-     $('.themeSelector').on('click', chooseTheme);
+                runTimer();
+            };
 
-      $('.difficultySelector').on('click', chooseDifficulty);
 
-      $('.playAgain').empty();
-  }
+            var evaluateFirstClick = function(reference) {
+                firstCardValue = reference.attr("value");
+                firstCardId = reference.attr("id");
+                $("#" + firstCardId).attr("disabled", 'disabled');
+                console.log("First " + firstCardValue);
+                firstClick = true;
+            };
 
-  function playAgain() {
-    $('.playAgain').html("<button type='button' class='btn waves-effect' id='newGame'>Play Again</button>")
-    $('#newGame').on('click', loadGame);
-  }
+            var evaluateSecondClick = function(reference) {
+                console.log("Second " + firstCardValue);
+                secondCardId = reference.attr("id");
+                $("#" + secondCardId).attr("disabled", 'disabled');
+                $('#gameMessage').html("<h3>There's a match!</h3>");
+                $("#" + firstCardId).css('opacity', '.4');
+                $("#" + secondCardId).css('opacity', '.4');
+                firstCardId = "";
+                firstClick = false;
+                secondCardId = "";
+                matchScore++;
+                match();
+            };
 
-});
+            // Increment incorrect matches then divide that number by level difficulty match. * 100.
+            var calcAccuracy = function() {
+                console.log(((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100));
 
-</script>
+                accuracy = ((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100).toFixed(2);
+                $('.accuracyDiv').html('Accuracy: ' + accuracy + '%');
+            }
 
- <script src="/static/js/index.js"></script>
+            var match = function() {
+                if (matchScore == calcWinScore(difficultyNumber)) {
+                    calcAccuracy();
+                    clearInterval(timerCount);
+                    youWin();
+                }
+            };
 
+            var nonMatch = function(secondCardId) {
+                $('#gameMessage').html("<h3>Not a match!</h3>");
+                setTimeout(function() {
+                    $('#gameMessage').empty();
+                }, 1000);
+                $("#" + firstCardId).removeAttr("disabled");
+                firstCardId = "";
+                secondCardId = "";
+                firstClick = false;
+                incorrect++
+            };
+
+            var disableSpecialCard = function(reference) {
+                flipCardBack(firstCardId);
+                reference.attr("disabled", 'disabled');
+                $('#gameMessage').html("<h3>You picked a special card!</h3>");
+            };
+
+            var resetFirstClick = function() {
+                $("#" + firstCardId).removeAttr("disabled");
+                firstClick = false;
+            };
+
+            $(document).on("click", '.emoji-card', function() {
+                var reference = $(this);
+
+                var referenceCard = $(this).attr('id');
+
+
+
+                if (reference.attr("disabled") !== "disabled") {
+                    flipCard(referenceCard);
+                    // Milo/Skull Logic
+                    if (reference.attr("value") == "y" || reference.attr("value") == "z") {
+                        // Disables the milo/skull cards.
+                        disableSpecialCard(reference);
+
+                        if (reference.attr("value") == "z") {
+                            // Call Andrew.
+                            // Reveal all cards for one second. Then flip them back.
+                            $("#" + referenceCard).css('background-color', '#000000 !important');
+                            revealAll(difficultyNumber);
+
+                        } else if (reference.attr("value") == "y") {
+                            // Call Andrew again.
+                            // Cover the screen for a bit and then shuffle all cards.
+                            // Display a message stating all cards have been shuffled.
+                            skullMaster();
+                        }
+                        // Resets the first click.
+                        if (firstClick == true) {
+                            resetFirstClick();
+                        }
+                    }
+                    // Everything else. Lol
+                    else if (firstClick == false) {
+                        // First Click.
+                        evaluateFirstClick(reference);
+                    } else if (firstClick == true) {
+                        secondCardId = reference.attr("id");
+                        // Evaluate second click for match.
+                        if (reference.attr("value") == firstCardValue) {
+                            evaluateSecondClick(reference);
+                        } else {
+                            secondCardId = reference.attr("id");
+                            console.log("Flip first card " + firstCardId);
+                            flipCardBack(firstCardId, 1000);
+                            console.log("Flip second card " + secondCardId);
+                            flipCardBack(secondCardId, 1000);
+                            nonMatch(secondCardId);
+                        }
+                    }
+                }
+            });
+
+            // Flip Card
+            function flipCard(cardSelected) {
+                // console.log("Flip Card " + cardSelected);
+                var cardQM = "#qm-" + cardSelected;
+                var cardImage = "#card-" + cardSelected;
+                var cardDiv = "#" + cardSelected;
+
+                $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlip');
+
+                $(cardQM).attr('class', 'qm show-card');
+
+                $(cardDiv).css('background', 'radial-gradient(#f6bf00, #f4ad01)');
+                setTimeout(function() {
+                    $(cardDiv).css('background', '#FFFFFF');
+                }, 500)
+
+                $(cardImage).css('opacity', '0)');
+                setTimeout(function() {
+                    $(cardImage).css('opacity', '1');
+                }, 250);
+            }
+
+            // FLIP CARD BACK BELOW HERE
+            function flipCardBack(card, time) {
+
+                setTimeout(function() {
+                    // console.log("five seconds" + card);
+
+                    var cardQM = "#qm-" + card;
+                    var cardImage = "#card-" + card;
+                    var cardDiv = "#" + card;
+
+                    $(cardDiv).removeAttr("disabled");
+
+                    $(cardDiv).attr('class', 'emoji-card nameOfThingtoFlipBack');
+
+                    $(cardDiv).css('background', '#FFFFFF');
+                    setTimeout(function() {
+                        $(cardDiv).css('background', 'radial-gradient(#f6bf00, #f4ad01)')
+                    }, 500);
+
+                    $(cardImage).css('opacity', '1)');
+                    setTimeout(function() {
+                        $(cardImage).css('opacity', '0');
+                    }, 250)
+
+                    setTimeout(function() {
+                        $(cardQM).attr('class', 'qm hide-card');
+                    }, 500)
+                }, time);
+
+            }
+
+            // Timer
+            function runTimer() {
+                var counter = 0,
+                    cDisplay = $(".Timer");
+                format = function(t) {
+                    var minutes = Math.floor(t / 600),
+                        seconds = Math.floor((t / 10) % 60);
+                    minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
+                    seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+                    cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
+                    endingTime = (minutes + ":" + seconds + "." + Math.floor(t % 10));
+
+                };
+                timerCount = setInterval(function() {
+                    counter++;
+                    format(counter);
+                }, 100);
+            };
+
+
+            function revealAll(difficultyNumber) {
+                var cards = (difficultyNumber + 2);
+                for (i = 1; i <= cards; i++) {
+                    var myCard = "#" + i;
+                    if ($(myCard).attr("disabled") !== "disabled") {
+                        flipCard(i);
+                        flipCardBack(i, 2000);
+                    }
+                }
+            }
+
+            function skullMaster() {
+
+                skullDiv = document.createElement('div');
+                $(skullDiv).attr('class', 'skull-overlay');
+                $('#skull-container').html(skullDiv);
+                $('.skull-overlay').html('<img class="skullHead" src="/static/images/emojisvg/skull.svg" width="90%">');
+                skullLaughter.play();
+
+                setTimeout(function() {
+                    $('#skull-container').empty();
+
+                }, 4000)
+            }
+
+
+            function youWin() {
+                pushToLeaderBoard();
+                playAgain();
+                $('#gameMessage').html("<h3>Milo is impressed with your skill and fortitude!</h3>");
+                $('.gameboard').html("<h3 class='youWin'>You Win!</h3><img src='/static/images/emoji/game/milo.png' class='milo'>")
+            }
+
+
+            function loadGame() {
+                themeCardsArray = [],
+                    firstCardValue = "",
+                    firstCardId = "",
+                    secondCardId = "",
+                    firstClick = false,
+                    matchScore = 0,
+                    difficultyValue = "",
+                    difficultyNumber = 0,
+                    incorrect = 0,
+                    tableData = "",
+                    emojiObjects = [],
+                    theme = "",
+                    difficulty = "",
+                    themeSelected = "",
+                    difficultySelected = "",
+                    endingTime = "",
+                    accuracy = 0;
+                $('#gameMessage').html('<div class="instructionNumber">1</div> <p>Choose your theme and difficulty level.</p><div class="instructionNumber">2</div><p>Find matching pairs.</p><div class="instructionNumber">3</div><p>Watch out for the skull. <bR>He will do anything to stand in your way.</p><div class="instructionNumber">4</div><p>Find Milo the sugar glider for a quick peek at the entire board.</p>');
+                $('.gameboard').html('<div id="themeButtons"><h2>Choose your theme</h2><button type="button" class="themeSelector btn waves-effect" value="Animals"  id="theme-a">Animals</button><button type="button" class="themeSelector btn waves-effect" value="Flags"  id="theme-f">Flags</button><button type="button" class="themeSelector btn waves-effect" value="Random"  id="theme-r">Random</button></div><div id="difficultyButtons"><h2>Choose your Difficulty</h2><button type="button" class="difficultySelector btn waves-effect" value="easy"   id="diff-e">Easy</button><button type="button" class="difficultySelector btn waves-effect" value="medium" id="diff-m">Medium</button><button type="button" class="difficultySelector btn waves-effect" value="hard" id="diff-h">Hard</button></div>');
+                $('#difficultyButtons').removeAttr('display');
+                $('#themeButtons').removeAttr('display');
+                $('.accuracyDiv').empty();
+                $('.Timer').empty();
+
+                $('.themeSelector').on('click', chooseTheme);
+
+                $('.difficultySelector').on('click', chooseDifficulty);
+
+                $('.playAgain').empty();
+            }
+
+            function playAgain() {
+                $('.playAgain').html("<button type='button' class='btn waves-effect' id='newGame'>Play Again</button>")
+                $('#newGame').on('click', loadGame);
+            }
+
+            var pushToLeaderBoard = function() {
+                var userData = {
+                    player_name: "Guest",
+                    time: endingTime,
+                    accuracy: accuracy
+                }
+                $(".players").empty();
+                $.post("/leaderboard", userData, function(data) {
+
+                }).done(function(data) {
+                    $.get("/leaderboard", function(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            console.log(data);
+                            var playerScore = "<div class='row high-score-row'>";
+                            playerScore += "<div class='col s4 player_name'>" + data[i].player_name + "</div>";
+                            playerScore += "<div class='col s4 score-num time'>" + data[i].time + "</div>";
+                            playerScore += "<div class='col s4 score-num accuracy'>" + data[i].accuracy + "</div>";
+                            playerScore += "</div>";
+                            $(".players").append(playerScore);
+                        }
+                    })
+                })
+            }
+        });
+        </script>
+        <script src="/static/js/index.js"></script>
 </body>
+
 </html>

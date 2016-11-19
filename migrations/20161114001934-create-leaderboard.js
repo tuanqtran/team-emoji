@@ -2,20 +2,20 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('Leaderboards', {
-      id: {
+      player_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      player_id: {
-        type: Sequelize.INTEGER
-      },
       player_name: {
         type: Sequelize.STRING
       },
-      top_score: {
-        type: Sequelize.INTEGER
+      time: {
+        type: Sequelize.STRING
+      },
+      accuracy: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

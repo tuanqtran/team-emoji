@@ -533,6 +533,13 @@ img.game-icon-logo-small {
 	z-index: 1005;
 }
 
+.modal-content h3 {
+	font-family: 'VT323', monospace;
+	color: #ffb608;
+	font-size: 3rem;
+	padding: 0px;
+}
+
 .modal-content h4 {
 	font-family: 'VT323', monospace;
 	color: #ffb608;

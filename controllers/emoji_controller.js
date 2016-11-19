@@ -59,4 +59,30 @@ router.get('/special', function(req, res){
 	})
 });
 
+router.get('/leaderboard', function(req, res){
+	models.Leaderboard.findAll({
+		where:
+		{player_id:
+			{$gt: 0}
+		},
+		order:[['time', 'ASC']],
+		limit: 10
+	})
+	.then(function(data){
+		res.send(data);
+	})
+})
+
+router.post('/leaderboard', function(req, res){
+	console.log(req.body);
+	models.Leaderboard.create({
+		'player_name': req.body.player_name,
+		'time': req.body.time,
+		'accuracy': req.body.accuracy
+	})
+	.then(function(){
+		res.end();	
+	})
+});
+
 module.exports = router;
