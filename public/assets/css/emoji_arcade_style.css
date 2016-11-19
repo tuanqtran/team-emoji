@@ -127,22 +127,25 @@ footer {
 
 .developer-row {
 	padding: 0px;
-	padding-top: 5px;
+	padding-top: 0px;
 	margin-bottom: 0px;
 
 }
 
 .developer-emoji {
-	display: inline-block;
+	display: block;
 	vertical-align: middle;
+	text-align: center;
 }
 
 .developer-name {
-	display: inline-block;
+	display: block;
 	vertical-align: middle;
+	text-align: center;
 	padding: 0px;
 	margin: 0px;
-	padding-bottom: 10px;
+	padding-bottom: 0px;
+	padding-top: 0px;
 
 }
 
@@ -152,7 +155,9 @@ footer {
 }
 
 .dev-emoji {
-	width: 50px;
+	width: 100px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 button.sound-toggle {
