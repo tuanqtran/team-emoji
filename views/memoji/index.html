@@ -560,6 +560,10 @@ $(document).on("click", '.emoji-card', function(){
     $('#themeButtons').removeAttr('display');
     $('.accuracyDiv').empty();
     $('.Timer').empty();
+
+     $('.themeSelector').on('click', chooseTheme);
+
+      $('.difficultySelector').on('click', chooseDifficulty);
   }
 
   function playAgain() {
