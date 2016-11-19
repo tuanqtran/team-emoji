@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Arcade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- add jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.1.0.js"   
+    integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   
+    crossorigin="anonymous">   
+    </script>
+
+       <!-- Add Font Awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add materialize stylesheet -->
+    <link href="/static/materialize/css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection">
+<!-- Add unique stylesheet -->
+    <link href="/static/css/emoji_arcade_style.css" rel="stylesheet" type="text/css">
+
+<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Add Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Press+Start+2P|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i|Share+Tech+Mono|Ubuntu+Condensed|VT323" rel="stylesheet">
+
+<!--load Materialize javascript - lets Materialize framework work-->
+    <script src="public/assets/js/materialize.js"></script>
+
+    <script src="public/assets/js/index.js"></script>
+
+</head>
+
+<body>
+<div class="Timer"></div>
+<!-- <form action="/data/Animals" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" value="Animals">Animal</button>
+<!-- </form> -->
+<!-- <form action="/data/Flags" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" value="Flags">Flag</button>
+<!-- </form>
+ --><!-- <form action="/data/Random" method="POST">
+ -->	
+ <button type="submit" class="themeSelector" value="Random">Random</button>
+<!-- </form> -->
+
+
+<button class="difficultySelector" value="easy">Easy</button>
+<button class="difficultySelector" value="medium">Medium</button>
+<button class="difficultySelector" value="hard">Hard</button>
+
+ <main class="memoji" style="color: white">
+  <div class="row">
+<!-- <div class="col s4 m2 l2 emoji-card" value="hey">WOOHOO</div> -->
+<!--       <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40a.png" class="emoji" id="1"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40b.png" class="emoji"  id="2"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40c.png" class="emoji"  id="3"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40d.png" class="emoji"  id="4"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40e.png" class="emoji"  id="5"></div></div>
+      <div class="col s4 m2 l2"><div class="emoji-card"><img src="../emoji/animals/1f40f.png" class="emoji"  id="6"></div></div>
+  </div> -->
+ </main>
+</div>
+
+<script>
+// var easyArrayTiles = [], // 24 tiles
+  // mediumArrayTiles = [], // 36 tiles.
+  // hardArrayTiles = []; // 48 tiles.
+
+// Skull Milo Card 
+// Skull card = 1 if flipped. Punishes them by randomizing the board
+// Skull card when both cards are displayed you lose.
+// Milo card = 1 if flipped. Rewards them by flipping all cards for 1 second.
+// Milo card gives a bonus.
+// A and B will be the skull/milo cards. Does not required to be filed to win/lose.
+
+// Randomize the emoji cards in the table tiles.
+var initialTest = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m","n" ,"o" ,"p" ,"q" ,"r" ,"s" ,"t" ,"u" ,"v" ,"w" ,"x" ,"y", "z"],
+	skullMilo = ["skull", "milo"],
+	themeCardsArray = [],
+	firstCardValue = "",
+	firstCardId = "",
+	secondCardId = "",
+	firstClick = false,
+	matchScore = 0,
+	difficultyValue = "",
+	difficultyNumber = 0,
+	incorrect = 0,
+    tableData = "",
+    emojiObjects = [];
+
+
+
+
+function runTableQuery(theme){
+
+    // Here we get the location of the root page.
+    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+    var currentURL = window.location.origin;
+
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({url: currentURL + "/data/" + theme, method: "GET"})
+        .done(function(data) {
+            tableData = data;
+            console.log(tableData);
+            for(var i = 0; i<tableData.length;i++){
+                emojiObjects.push(tableData[i]);
+            }
+            initDeck();
+        });
+}
+
+$(document).on("click", ".themeSelector", function(){
+	var theme = $(this).attr("value");
+	runTableQuery(theme);
+	
+});
+
+$(document).on("click", ".difficultySelector", function(){
+	difficultyValue = $(this).val();
+	difficultySelection(difficultyValue);
+});
+
+var calcWinScore = function(difficultyNumber){
+	console.log(difficultyNumber / 2);
+    return (difficultyNumber / 2);
+};
+
+var initDeck = function(){
+	// Put in orm function for theme.
+	for(var i=0; i<emojiObjects.length; i++){
+	  themeCardsArray.push(emojiObjects[i], emojiObjects[i]);
+	}
+};
+
+var difficultySelection = function(difficultyValue){
+	// Select difficulty
+	switch(difficultyValue) {
+	    case "easy":
+			// 22 indicates 11 pairs of cards excluding the milo/skull special cards for this difficulty case.
+	        difficultyNumber = 22;
+	        calcWinScore(difficultyNumber);
+			difficultyLevel(difficultyNumber);	        
+	        break;
+	    case "medium":
+			// 34 indicates 17 pairs of cards.
+	        difficultyNumber = 34;
+	        calcWinScore(difficultyNumber);
+			difficultyLevel(difficultyNumber);
+	        break;
+	    case "hard":
+			// 46 indicates 23 pairs of cards.
+	        difficultyNumber = 46;
+	        calcWinScore(difficultyNumber);
+			difficultyLevel(difficultyNumber);	        
+	        break;
+	    default:
+	        console.log("Difficulty not selected."); 
+	}
+};
+
+var difficultyLevel = function(difficultyNumber){
+	// Three difficulty levels.
+	// Easy = 22 choices
+	// Medium = 34 choices
+	// Hard = 46 choices
+	// Manipulate theme cards array and push into the actualDeck
+	themeCardsArray.splice(difficultyNumber);
+	console.log(themeCardsArray);
+	specialCards(themeCardsArray);
+};
+
+var specialCards = function(themeCardsArray){
+	// Put in orm function for skull/milo.
+	for(var i=0; i<skullMilo.length; i++){
+		themeCardsArray.push(skullMilo[i]);
+	}
+
+	// Before shuffle result.
+	console.log(themeCardsArray);
+	// Shuffling cards.
+	shuffleArray(themeCardsArray);
+	// After shuffle result.
+	console.log(themeCardsArray);	
+};
+
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+var shuffleArray = function(array){
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    renderCards(array);
+    return array;
+};
+
+var renderCards = function(array){
+	for(i=0;i<themeCardsArray.length; i++){
+        $(".memoji .row").append("<div class='col s4 m2 l2 emoji-card' value='" + themeCardsArray[i].letter_id + "' id='" + (i + 1) + "'>" + '<img src="/static/images/emojisvg/' + themeCardsArray[i].file_name + '"/>' + "</div>")
+        }
+};
+
+
+var evaluateFirstClick = function(reference){
+    firstCardValue = reference.attr("value");
+    firstCardId = reference.attr("id");
+    $("#" + firstCardId).attr("disabled", 'disabled');
+    console.log("First " + firstCardValue);
+    firstClick = true;
+};
+
+var evaluateSecondClick = function(reference){
+    console.log("Second " + firstCardValue);
+    secondCardId = reference.attr("id");
+    $("#" + secondCardId).attr("disabled", 'disabled');
+    alert("There's a match!")
+    firstCardId = "";
+    firstClick = false;
+    matchScore++;
+    match();
+};
+
+// Increment incorrect matches then divide that number by level difficulty match. * 100.
+var calcAccuracy = function(){
+	console.log(((difficultyNumber / 2) / ((difficultyNumber / 2) + incorrect) * 100));
+}
+
+var match = function(){
+    if(matchScore == calcWinScore(difficultyNumber)){
+    	calcAccuracy();
+        alert("You Win!");
+    }
+};
+
+var nonMatch = function(reference){
+    console.log(reference.attr("value"));
+    alert("Not a match!");
+    $("#" + firstCardId).removeAttr("disabled");
+    firstCardId = "";
+    secondCardId = "";
+    firstClick = false;
+    incorrect++
+};
+
+var disableSpecialCard = function(reference){
+    reference.attr("disabled", 'disabled');
+	alert("You picked a special card " + reference.attr("value"));	
+};
+
+var resetFirstClick = function(){
+	$("#" + firstCardId).removeAttr("disabled");
+	firstClick = false;
+};
+ 
+$(document).on("click", '.emoji-card', function(){
+	var reference = $(this); 
+
+    if(reference.attr("disabled") !== "disabled"){
+        // Milo/Skull Logic
+        if(reference.attr("value") == "milo" || reference.attr("value") == "skull"){
+        	// Disables the milo/skull cards.
+        	disableSpecialCard(reference);
+			
+			if(reference.attr("value") == "milo"){
+				// Call Andrew.
+				// Reveal all cards for one second. Then flip them back.
+			}else if(reference.attr("value") == "skull"){
+				// Call Andrew again.
+				// Cover the screen for a bit and then shuffle all cards.
+				// Display a message stating all cards have been shuffled.
+			}
+			// Resets the first click.
+			if(firstClick == true){
+				resetFirstClick();
+        	}
+        }
+        // Everything else. Lol
+        else if(firstClick == false){
+        	// First Click.
+        	evaluateFirstClick(reference);
+        }else if(firstClick == true){
+        	// Evaluate second click for match.
+            if(reference.attr("value") == firstCardValue){
+            	evaluateSecondClick(reference);
+            }else{
+            	nonMatch(reference);
+            }
+        }  
+    }
+});
+
+// Timer
+(function() {
+    var counter = 0,
+        cDisplay = $(".Timer");
+    format = function(t) {
+        var minutes = Math.floor(t / 600),
+            seconds = Math.floor((t / 10) % 60);
+        minutes = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
+        seconds = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+        cDisplay.text(minutes + ":" + seconds + "." + Math.floor(t % 10));
+    };
+    setInterval(function() {
+        counter++;
+        format(counter);
+    }, 100);
+})();
+
+</script>
+
+</body>
+</html>
