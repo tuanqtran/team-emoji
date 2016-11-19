@@ -44,20 +44,21 @@
 		   			<div class="col s12" id="loginBlock">
 		   				<p class="playerOne">Ready <span id="playerName">Player One</span></p>
 		   				<div class="loginFunctions">
-		   					<div class="row">
-		   						<div class="col s5 m5 l5">
-		   							<div class="g-signin2 googleBlock" data-onsuccess="onSignIn"></div>
+		   					<div class="row readyPlayer">
+
+		   						<div class="col s0 m2 l2"></div>
+		   						<div class="col s6 m4 l4 googleBox">
+		   							<div class="g-signin2 googleBlock" data-longtitle="true" data-width="200px" data-onsuccess="onSignIn"></div>
 		   						</div>
-		   						<div class="col s2 m2 l2">
-		   						or
-		   						</div>
-		   						<div class="col s5 m5 l5">
+		   						<div class="col s6 m4 l4 guestBox">
    <!--<a href="#" onclick="signOut();">Sign out</a>--> 
    									<div class="guestLogin">
-   										<a href="#modalLogin" class="loginButton modal-trigger">
+   										or <a href="#modalLogin" class="loginButton modal-trigger">
    										Play as Guest</a>
    									</div>
 		   						</div>
+
+		   						<div class="col s0 m2 l2"></div>
 		   					</div>
 
 
@@ -65,7 +66,17 @@
 					            <div class="modal-content">
 					              <h4 class="modal-title">Login as Guest</h4>
 					              <div class="row">
-					                <div class="col s12"> Enter Form</div>
+					                <div class="col s12"> 
+
+					                		<form action="/user/create/guest" method="POST" name="playGuest">
+					                		<label for="guestName">Enter Username</label>
+					                		<input type="text" name="guestName" class="guest-user">
+					                		<button type="submit" name="submitGuest" class="btn waves-effect">Login</button>
+					                		</form>
+
+
+
+					                </div>
 					              </div>
 					            </div>
 					        </div> 
@@ -76,7 +87,7 @@
 				</div>
 
 
-				<div class="row">
+				<div class="row startGame">
 					<div class="col s0 m2 l2"></div>
 
 					<div class="col s12 m4 l4" id="insertCoin">
