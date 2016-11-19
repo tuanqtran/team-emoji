@@ -1,35 +1,36 @@
 'use strict';
-module.exports = {
-  up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Leaderboards', {
+module.exports = function(sequelize, DataTypes) {
+  var Leaderboards = sequelize.define('Leaderboards', 
+    {
       player_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
       player_name: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       time: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       accuracy: {
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        type: DataTypes.DATE,
+        allowNull: false
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        type: DataTypes.DATE,
+        allowNull: false
       }
-    });
-  },
-  down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Leaderboards');
-  }
+    }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
+  });
+  return Leaderboards;
 };
