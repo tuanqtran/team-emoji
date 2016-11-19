@@ -342,7 +342,7 @@
                 $("#" + firstCardId).removeAttr("disabled");
                 firstCardId = "";
                 secondCardId = "";
-                firstClick = false;
+                firstClick = false;c
                 incorrect++
             };
 
@@ -482,18 +482,19 @@
                 }, 100);
             };
 
-
+            // Milo Logic
             function revealAll(difficultyNumber) {
                 var cards = (difficultyNumber + 2);
                 for (i = 1; i <= cards; i++) {
                     var myCard = "#" + i;
                     if ($(myCard).attr("disabled") !== "disabled") {
                         flipCard(i);
-                        flipCardBack(i, 2000);
+                        flipCardBack(i, 3000);
                     }
                 }
             }
-
+            
+            // Skull Logic
             function skullMaster() {
 
                 skullDiv = document.createElement('div');
