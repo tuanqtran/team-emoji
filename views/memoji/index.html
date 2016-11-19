@@ -143,8 +143,6 @@
 
     </footer> 
 
-     <div id="skull-container"></div>
-
   </div>
 
 <script>
@@ -531,11 +529,13 @@ $(document).on("click", '.emoji-card', function(){
 
   function skullMaster() {
 
-     
+      skullContainer  = document.createElement('div');
+      $(skullContainer).attr('id', 'skull-container'); 
 
       skullDiv = document.createElement('div');
       $(skullDiv).attr('class', 'skull-overlay'); 
-      $('#skull-containter').html(skullDiv);
+      $(skullContainer).append(skullDiv);
+      $('html').append(skullContainer);
       $('.skull-overlay').html('<img class="skullHead" src="/static/images/emojisvg/skull.svg" width="90%">');
       skullLaughter.play();
 
@@ -543,6 +543,9 @@ $(document).on("click", '.emoji-card', function(){
       $('#skull-container').empty()
 
     }, 4000) 
+
+
+    $('#skull-container').detach();
   }
 
 
