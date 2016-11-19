@@ -12,15 +12,17 @@ var coinSound = new Audio("/static/sounds/cha-ching.wav")
 
 	// Provides a pause/play function upon clicking the pause/play button.
 	// Also resets the player timer to 0 upon restarting.
-	$(".musicContainer").click(function(){
-		if (introSong.paused === false){
+	$(".sound-toggle").click(function(){
+		console.log('Sound Button')
+		if ($(this).attr('value') === 'on'){
 			introSong.pause();
-			introSong.currentTime = 0;
-			$(".musicContainer").html("<img class='mediaButton' src='images/pauseButton.png' alt=''>")
+			$('.sound-toggle').attr('value', 'off');
+			$('.sound-icon').attr('src', '/static/images/sound-off.png');
 		}else{
 			introSong.play();
 			introSong.loop = true;	
-			$(".musicContainer").html("<img class='mediaButton' src='images/playButton.png' alt=''>")		
+			$('.sound-toggle').attr('value', 'on');
+			$('.sound-icon').attr('src', '/static/images/sound-on.png');		
 		}
 	});
 

@@ -125,6 +125,43 @@ footer {
 	transform: translate(-50%, -50%);
 }
 
+.developer-row {
+	padding: 0px;
+	padding-top: 5px;
+	margin-bottom: 0px;
+
+}
+
+.developer-emoji {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.developer-name {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 10px;
+
+}
+
+.developer-links {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.dev-emoji {
+	width: 50px;
+}
+
+button.sound-toggle {
+	background-color: transparent;
+	border: 0px none;
+	vertical-align: middle;
+	padding-top: 16px;
+}
+
 input:not([type]), input[type=text], input[type=password], 
 input[type=email], input[type=url], input[type=time], 
 input[type=date], input[type=datetime], input[type=datetime-local], 
@@ -200,7 +237,7 @@ label {
 	padding: 0px;
 	padding-right: 20px;
 	background-color: none;
-	text-align: center;
+	text-align: right;
 }
 
 #nav a {
@@ -209,7 +246,7 @@ label {
 	color: #fdde67;
 	padding-left: 5px;
 	padding-right: 5px;
-	padding-top: 0px;
+	padding-top: 10px;
 	padding-bottom: 0px;
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -252,7 +289,7 @@ label {
 }
 
 .scores-button {
-	padding-top: 15px;
+	padding-top: 5px;
 }
 
 .logo-home {
